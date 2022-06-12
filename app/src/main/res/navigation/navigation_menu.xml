@@ -8,7 +8,22 @@
     <fragment
         android:id="@+id/list_characters"
         android:name="com.example.marvelcharacters.fragment.CharactersList"
-        tools:layout="@layout/fragment_list_characters" />
+        android:label="List characters"
+        tools:layout="@layout/fragment_list_characters">
+        <action
+            android:id="@+id/to_characterDetails"
+            app:destination="@+id/character_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/character_details"
+        android:name="com.example.marvelcharacters.fragment.CharacterDetails"
+        android:label="{name_User}"
+        tools:layout="@layout/fragment_details_character">
+        <argument
+            android:name="user_name"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/google_map"

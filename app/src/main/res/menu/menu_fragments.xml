@@ -7,6 +7,7 @@
 
     <item
         android:id="@+id/google_map"
+        android:icon="@drawable/ic_google_map"
         android:title="@string/google_map" />
 
 </menu>

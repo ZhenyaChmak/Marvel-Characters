@@ -7,5 +7,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:defaultNavHost="true"
-    app:navGraph="@navigation/navigation_container"
+    app:navGraph="@navigation/navigation_container_to_bottom_navigation"
     tools:context=".MainActivity" />
