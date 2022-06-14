@@ -3,22 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/drawable/ic_to_details_character.xml" value="0.25" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/activity_main.xml" value="0.18" />
-        <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_character.xml" value="0.21" />
+        <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_character.xml" value="0.19" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_character_details.xml" value="0.18958333333333333" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_characters_list.xml" value="0.18958333333333333" />
+        <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_comics.xml" value="0.18958333333333333" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_container.xml" value="0.2" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_container_bottomNavigation.xml" value="0.18958333333333333" />
-        <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_container_bottom_navigation.xml" value="0.16" />
+        <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_container_bottom_navigation.xml" value="0.2" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_container_bottomnavigation.xml" value="0.18958333333333333" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_container_details.xml" value="0.18958333333333333" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_container_list.xml" value="0.18958333333333333" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_container_list_characters.xml" value="0.1" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_details.xml" value="0.18958333333333333" />
-        <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_details_character.xml" value="0.18958333333333333" />
+        <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_details_character.xml" value="0.1" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_google_map.xml" value="0.18958333333333333" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_list_characters.xml" value="0.1" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_one.xml" value="0.18958333333333333" />
+        <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_series.xml" value="0.18958333333333333" />
+        <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_stories.xml" value="0.18958333333333333" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_test_con.xml" value="0.18958333333333333" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/menu/menu_details.xml" value="0.18958333333333333" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/menu/menu_fragments.xml" value="0.25" />

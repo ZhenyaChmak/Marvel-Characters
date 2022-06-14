@@ -68,6 +68,9 @@ dependencies {
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
 
+    // discrete scrollview
+    implementation "com.yarolegovich:discrete-scrollview:1.5.1"
+
 
     implementation(project(":data"))
     implementation(project(":domain"))

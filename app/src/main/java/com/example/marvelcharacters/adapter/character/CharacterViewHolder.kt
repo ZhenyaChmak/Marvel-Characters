@@ -1,6 +1,7 @@
-package com.example.marvelcharacters.adapter
+package com.example.marvelcharacters.adapter.character
 
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.marvelcharacters.databinding.FragmentCharacterBinding
 import com.example.marvelcharacters.domain.model.Character
 
@@ -12,8 +13,9 @@ class CharacterViewHolder(
     fun bind(character: Character) {
         with(binding) {
             userName.text = character.name
+            itemCharacterPhoto.load(character.photo)
 
-            root.setOnClickListener {
+            details.setOnClickListener {
                 onClickedCharacter(character)
             }
         }

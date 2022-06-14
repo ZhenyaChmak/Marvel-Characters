@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_menu"
-    app:startDestination="@id/list_characters">
+    app:startDestination="@id/characters_list">
 
     <fragment
-        android:id="@+id/list_characters"
+        android:id="@+id/characters_list"
         android:name="com.example.marvelcharacters.fragment.CharactersList"
         android:label="List characters"
         tools:layout="@layout/fragment_list_characters">
@@ -21,7 +21,10 @@
         android:label="{name_User}"
         tools:layout="@layout/fragment_details_character">
         <argument
-            android:name="user_name"
+            android:name="character_id"
+            app:argType="integer" />
+        <argument
+            android:name="character_name"
             app:argType="string" />
     </fragment>
 

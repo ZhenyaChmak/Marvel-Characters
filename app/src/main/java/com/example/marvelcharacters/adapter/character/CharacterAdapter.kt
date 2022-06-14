@@ -1,11 +1,10 @@
-package com.example.marvelcharacters.adapter
+package com.example.marvelcharacters.adapter.character
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.example.marvelcharacters.databinding.FragmentCharacterBinding
 import com.example.marvelcharacters.domain.model.Character
 
