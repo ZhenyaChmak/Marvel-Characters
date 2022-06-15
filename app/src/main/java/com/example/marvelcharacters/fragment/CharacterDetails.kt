@@ -49,8 +49,6 @@ class CharacterDetails : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.resaaaaa.text = args.characterName
-
         binding.seriesList.adapter = adapterSeries
         binding.seriesList.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)

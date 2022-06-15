@@ -3,12 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_container"
-    android:layout_width="280dp"
+    android:layout_width="260dp"
     android:layout_height="wrap_content"
-    android:layout_marginStart="15dp"
-    android:layout_marginTop="15dp"
-    android:layout_marginEnd="30dp"
-    android:layout_marginBottom="30dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="32dp"
     app:cardBackgroundColor="@color/background800"
     app:cardCornerRadius="20dp">
 
@@ -20,11 +19,8 @@
             android:id="@+id/item_character_photo"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_gravity="center"
+            android:contentDescription="@string/photo_character"
             android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
-
-            android:src="@mipmap/ic_launcher"
             app:layout_constraintDimensionRatio="@string/height_item_character_photo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,21 +31,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
+            android:contentDescription="@string/click_to_details"
             android:src="@drawable/ic_to_details_character"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/user_name"
+            android:id="@+id/character_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center_vertical"
-            android:textSize="32sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="15dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
             android:textColor="@color/white"
+            android:textSize="32sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:text="@tools:sample/cities" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

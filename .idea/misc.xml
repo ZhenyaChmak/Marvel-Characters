@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/drawable/ic_from_details.xml" value="0.20572916666666666" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/drawable/ic_to_details_character.xml" value="0.25" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_character.xml" value="0.19" />
@@ -17,9 +18,9 @@
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_container_list.xml" value="0.18958333333333333" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_container_list_characters.xml" value="0.1" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_details.xml" value="0.18958333333333333" />
-        <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_details_character.xml" value="0.1" />
+        <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_details_character.xml" value="0.21" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_google_map.xml" value="0.18958333333333333" />
-        <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_list_characters.xml" value="0.1" />
+        <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_list_characters.xml" value="0.21" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_one.xml" value="0.18958333333333333" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_series.xml" value="0.18958333333333333" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/layout/fragment_stories.xml" value="0.18958333333333333" />

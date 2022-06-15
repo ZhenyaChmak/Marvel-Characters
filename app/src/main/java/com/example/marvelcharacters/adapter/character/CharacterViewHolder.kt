@@ -12,7 +12,7 @@ class CharacterViewHolder(
 
     fun bind(character: Character) {
         with(binding) {
-            userName.text = character.name
+            characterName.text = character.name
             itemCharacterPhoto.load(character.photo)
 
             details.setOnClickListener {

@@ -2,4 +2,12 @@
     <string name="app_name">Marvel Characters</string>
     <string name="characters">Characters</string>
     <string name="google_map">Google Map</string>
+    <string name="marvel_logo">Marvel logo</string>
+    <string name="photo_character">Photo character</string>
+    <string name="click_to_details">Click to details</string>
+    <string name="series">Series</string>
+    <string name="comics">Comics</string>
+    <string name="stories">Stories</string>
+    <string name="from_details">From_details</string>
+    <string name="photo_series">photo_series</string>
 </resources>

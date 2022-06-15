@@ -40,9 +40,6 @@ class SeriesAdapter(
                 oldItem: Series,
                 newItem: Series
             ): Boolean {
-                /*  val oldUser = oldItem as? PageItem.Element
-                  val newUser = newItem as? PageItem.Element
-                  return oldUser?.data == newUser?.data*/
                 return oldItem == newItem
             }
         }

@@ -46,9 +46,9 @@ class CharactersList : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.charactersListRec.adapter = adapter
-        binding.charactersListRec.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.charactersListContainer.adapter = adapter
+        /*binding.charactersListContainer.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)*/
 
         viewModel
             .dataFlow
