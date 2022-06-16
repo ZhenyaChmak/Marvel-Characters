@@ -2,9 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_details_character"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -30,10 +31,18 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_ic_from_details"
+                android:contentDescription="@string/background_ic_from_details"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
                 android:id="@+id/from_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
+                android:layout_margin="4dp"
                 android:contentDescription="@string/from_details"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -49,7 +58,8 @@
                 android:textColor="@color/black"
                 android:textSize="32sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 tools:text="@tools:sample/cities" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -91,7 +101,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/series"
-                tools:listitem="@layout/fragment_series" />
+                tools:listitem="@layout/fragment_character_series" />
 
             <TextView
                 android:id="@+id/comics"
@@ -119,7 +129,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/comics"
-                tools:listitem="@layout/fragment_series" />
+                tools:listitem="@layout/fragment_character_series" />
 
             <TextView
                 android:id="@+id/stories"
@@ -147,7 +157,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stories"
-                tools:listitem="@layout/fragment_series" />
+                tools:listitem="@layout/fragment_character_series" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

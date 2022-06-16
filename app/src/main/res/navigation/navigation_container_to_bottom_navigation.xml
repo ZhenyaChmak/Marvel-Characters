@@ -2,12 +2,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation_bottom_container"
+    android:id="@+id/container_bottom_navigation"
     app:startDestination="@id/container_fragments_bottom_navigation">
 
     <fragment
         android:id="@+id/container_fragments_bottom_navigation"
-        android:name="com.example.marvelcharacters.fragment.ContainerBottomNavigation"
+        android:name="com.example.marvelcharacters.ui.ContainerBottomNavigation"
         tools:layout="@layout/fragment_container_bottom_navigation" />
 
 </navigation>

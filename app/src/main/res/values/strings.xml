@@ -9,5 +9,11 @@
     <string name="comics">Comics</string>
     <string name="stories">Stories</string>
     <string name="from_details">From_details</string>
-    <string name="photo_series">photo_series</string>
+    <string name="photo_series">Photo_series</string>
+    <string name="photo_series_details">Photo_series_details</string>
+    <string name="character_id">Character_id</string>
+    <string name="character_name">Character_name</string>
+    <string name="background_ic_from_details">background_ic_from_details</string>
+    <string name="background_ic_to_details_character">background_ic_to_details_character</string>
+
 </resources>

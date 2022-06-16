@@ -2,11 +2,11 @@ package com.example.marvelcharacters.adapter.series
 
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.marvelcharacters.databinding.FragmentSeriesBinding
+import com.example.marvelcharacters.databinding.FragmentCharacterSeriesBinding
 import com.example.marvelcharacters.domain.model.Series
 
 class SeriesViewHolder(
-    private val binding: FragmentSeriesBinding,
+    private val binding: FragmentCharacterSeriesBinding,
     private val onClickedCharacter: (Series) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 

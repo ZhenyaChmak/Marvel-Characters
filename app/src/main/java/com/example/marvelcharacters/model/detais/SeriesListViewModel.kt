@@ -1,4 +1,4 @@
-package com.example.marvelcharacters.model
+package com.example.marvelcharacters.model.detais
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.example.marvelcharacters.databinding.FragmentSeriesBinding
+import com.example.marvelcharacters.databinding.FragmentCharacterSeriesBinding
 import com.example.marvelcharacters.domain.model.Series
 
 class SeriesAdapter(
@@ -17,7 +17,7 @@ class SeriesAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SeriesViewHolder {
         return SeriesViewHolder(
-            binding = FragmentSeriesBinding.inflate(layoutInflater, parent, false),
+            binding = FragmentCharacterSeriesBinding.inflate(layoutInflater, parent, false),
             onClickedCharacter = onClickedCharacter
         )
     }

@@ -1,4 +1,4 @@
-package com.example.marvelcharacters.fragment
+package com.example.marvelcharacters.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -35,12 +35,10 @@ class ContainerBottomNavigation : Fragment() {
 
         menuController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.character_details -> binding.bottomNavigation.visibility = View.GONE
                 R.id.characters_list -> binding.bottomNavigation.visibility = View.VISIBLE
-                else -> binding.bottomNavigation.visibility = View.VISIBLE
+                R.id.character_details -> binding.bottomNavigation.visibility = View.GONE
             }
         }
-
     }
 
     override fun onDestroyView() {

@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class CharacterListViewModel(
-    private val remoteUseCase : GetCharactersRemoteUseCase
+    private val remoteUseCase: GetCharactersRemoteUseCase
 ) : ViewModel() {
 
 
@@ -21,6 +21,5 @@ class CharacterListViewModel(
         replay = 1,
         started = SharingStarted.Eagerly
     )
-
 
 }

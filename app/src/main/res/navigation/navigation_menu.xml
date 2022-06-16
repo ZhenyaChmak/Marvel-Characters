@@ -7,30 +7,56 @@
 
     <fragment
         android:id="@+id/characters_list"
-        android:name="com.example.marvelcharacters.fragment.CharactersList"
-        android:label="List characters"
-        tools:layout="@layout/fragment_list_characters">
+        android:name="com.example.marvelcharacters.ui.CharactersList"
+        tools:layout="@layout/fragment_characters_list">
         <action
             android:id="@+id/to_characterDetails"
-            app:destination="@+id/character_details" />
+            app:destination="@+id/character_details"
+            app:enterAnim="@anim/enter_anim_character_details"
+            app:exitAnim="@anim/exit_anim_characters_list"
+            app:popEnterAnim="@anim/pop_enter_anim_characters_list"
+            app:popExitAnim="@anim/pop_exit_anim_character_details" />
     </fragment>
 
     <fragment
         android:id="@+id/character_details"
-        android:name="com.example.marvelcharacters.fragment.CharacterDetails"
-        android:label="{name_User}"
-        tools:layout="@layout/fragment_details_character">
+        android:name="com.example.marvelcharacters.ui.details.CharacterDetails"
+        tools:layout="@layout/fragment_character_details">
         <argument
             android:name="character_id"
             app:argType="integer" />
         <argument
             android:name="character_name"
             app:argType="string" />
+        <argument
+            android:name="character_photo"
+            app:argType="string" />
+        <action
+            android:id="@+id/to_seriesDetails"
+            app:destination="@+id/series_details" />
     </fragment>
 
     <fragment
+        android:id="@+id/series_details"
+        android:name="com.example.marvelcharacters.ui.details.series.SeriesDetails"
+        tools:layout="@layout/fragment_character_series_details">
+
+    </fragment>
+
+
+    <!--<argument
+        android:name="photo_series_details"
+        app:argType="String" />
+    <argument
+        android:name="name_series_details"
+        app:argType="String" />
+    <argument
+        android:name="description_series_details"
+        app:argType="String" />-->
+
+    <fragment
         android:id="@+id/google_map"
-        android:name="com.example.marvelcharacters.fragment.GoogleMap"
+        android:name="com.example.marvelcharacters.ui.GoogleMap"
         tools:layout="@layout/fragment_google_map" />
 
 </navigation>

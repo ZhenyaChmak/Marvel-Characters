@@ -1,4 +1,4 @@
-package com.example.marvelcharacters.fragment
+package com.example.marvelcharacters.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.marvelcharacters.adapter.character.CharacterAdapter
-import com.example.marvelcharacters.databinding.FragmentListCharactersBinding
+import com.example.marvelcharacters.databinding.FragmentCharactersListBinding
 import com.example.marvelcharacters.model.CharacterListViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -17,7 +16,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CharactersList : Fragment() {
 
-    private var _binding: FragmentListCharactersBinding? = null
+    private var _binding: FragmentCharactersListBinding? = null
     private val binding get() = requireNotNull(_binding)
 
     private val viewModel by viewModel<CharacterListViewModel>()
@@ -26,7 +25,7 @@ class CharactersList : Fragment() {
         CharacterAdapter(requireContext()) {
             findNavController().navigate(
                 CharactersListDirections.toCharacterDetails(
-                    it.id, it.name
+                    it.id, it.name, it.photo
                 )
             )
         }
@@ -38,7 +37,7 @@ class CharactersList : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        return FragmentListCharactersBinding.inflate(inflater, container, false)
+        return FragmentCharactersListBinding.inflate(inflater, container, false)
             .also { _binding = it }
             .root
     }
@@ -47,8 +46,8 @@ class CharactersList : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.charactersListContainer.adapter = adapter
-        /*binding.charactersListContainer.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)*/
+
+        scrollView(binding.charactersListContainer, adapter)
 
         viewModel
             .dataFlow
@@ -64,8 +63,6 @@ class CharactersList : Fragment() {
                 )
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)
-
-
     }
 
     override fun onDestroyView() {
@@ -73,3 +70,4 @@ class CharactersList : Fragment() {
         _binding = null
     }
 }
+
