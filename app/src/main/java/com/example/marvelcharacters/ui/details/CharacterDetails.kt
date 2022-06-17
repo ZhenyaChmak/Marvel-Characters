@@ -12,7 +12,9 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.example.marvelcharacters.R
+import com.example.marvelcharacters.adapter.comics.ComicsAdapter
 import com.example.marvelcharacters.adapter.series.SeriesAdapter
+import com.example.marvelcharacters.adapter.stories.StoriesAdapter
 import com.example.marvelcharacters.databinding.FragmentCharacterDetailsBinding
 import com.example.marvelcharacters.model.detais.SeriesListViewModel
 import com.example.marvelcharacters.ui.details.series.SeriesDetails
@@ -35,12 +37,24 @@ class CharacterDetails : Fragment() {
     private val adapterSeries by lazy {
         SeriesAdapter(requireContext()) {
             AlertDialog.Builder(requireContext())
+                .setTitle("ddasd")
                 .show()
             /*findNavController().navigate(
                 CharacterDetailsDirections.toSeriesDetails()
             )*/
         }
+    }
 
+    private val adapterComics by lazy{
+        ComicsAdapter(requireContext()){
+
+        }
+    }
+
+    private val adapterStories by lazy{
+        StoriesAdapter(requireContext()){
+
+        }
     }
 
     override fun onCreateView(
@@ -61,8 +75,13 @@ class CharacterDetails : Fragment() {
         binding.seriesList.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
+        binding.fromDetails.setOnClickListener {
+            findNavController().navigateUp()
+        }
         binding.itemCharacterDetailPhoto.load(args.characterPhoto)
         binding.characterNameDetails.text = args.characterName
+
+
 
 
         viewModelSeries
@@ -79,9 +98,10 @@ class CharacterDetails : Fragment() {
                 )
             }.launchIn(viewLifecycleOwner.lifecycleScope)
 
-        binding.fromDetails.setOnClickListener {
-            findNavController().navigateUp()
-        }
+
+
+
+
     }
 
     override fun onDestroyView() {

@@ -10,7 +10,7 @@ import com.example.marvelcharacters.domain.model.Series
 
 class SeriesAdapter(
     context: Context,
-    private val onClickedCharacter: (Series) -> Unit
+    private val onClickedSeries: (Series) -> Unit
 ) : ListAdapter<Series, SeriesViewHolder>(DIFF_UTIL) {
 
     private val layoutInflater = LayoutInflater.from(context)
@@ -18,7 +18,7 @@ class SeriesAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SeriesViewHolder {
         return SeriesViewHolder(
             binding = FragmentCharacterSeriesBinding.inflate(layoutInflater, parent, false),
-            onClickedCharacter = onClickedCharacter
+            onClickedSeries = onClickedSeries
         )
     }
 

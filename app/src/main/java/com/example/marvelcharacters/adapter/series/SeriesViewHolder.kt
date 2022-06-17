@@ -7,7 +7,7 @@ import com.example.marvelcharacters.domain.model.Series
 
 class SeriesViewHolder(
     private val binding: FragmentCharacterSeriesBinding,
-    private val onClickedCharacter: (Series) -> Unit
+    private val onClickedSeries: (Series) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(series: Series) {
@@ -15,7 +15,7 @@ class SeriesViewHolder(
             photoSeries.load(series.photoSeries)
 
             root.setOnClickListener {
-                onClickedCharacter(series)
+                onClickedSeries(series)
             }
         }
     }
