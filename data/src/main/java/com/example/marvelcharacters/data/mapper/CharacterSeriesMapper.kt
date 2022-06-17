@@ -3,7 +3,6 @@ package com.example.marvelcharacters.data.mapper
 import com.example.marvelcharacters.data.module.series.ResultSeries
 import com.example.marvelcharacters.domain.model.Series
 
-
 internal fun List<ResultSeries>.toDomainModel(): List<Series> {
     return map {
         it.toDomainModel()

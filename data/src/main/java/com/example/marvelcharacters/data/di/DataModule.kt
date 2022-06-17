@@ -4,10 +4,9 @@ import org.koin.dsl.module
 
 val dataModule = module {
     includes(
+        databaseModule,
         networkModule,
-        repositoryRemoteModule,
-        repositorySeriesRemoteModule,
-        useCaseRemoteModule,
-        useCaseSeriesRemoteModule
+        repositoryModule,
+        useCaseModule
     )
 }

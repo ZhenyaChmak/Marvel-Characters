@@ -8,6 +8,7 @@ import com.example.marvelcharacters.domain.repository.CharacterSeriesRemoteRepos
 internal class CharacterSeriesRepositoryImpl(
     private val githubApi: GithubApi
 ) : CharacterSeriesRemoteRepository {
+
     override suspend fun getSeries(id: Int): Result<List<Series>> {
         return runCatching {
             githubApi.getSeries(id)
@@ -15,4 +16,5 @@ internal class CharacterSeriesRepositoryImpl(
             it.data.results.toDomainModel()
         }
     }
+
 }

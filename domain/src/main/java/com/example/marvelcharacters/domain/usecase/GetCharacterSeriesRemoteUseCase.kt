@@ -6,7 +6,9 @@ import com.example.marvelcharacters.domain.repository.CharacterSeriesRemoteRepos
 class GetCharacterSeriesRemoteUseCase(
     private val characterSeriesRemoteUseCase: CharacterSeriesRemoteRepository
 ) {
+
     suspend operator fun invoke(id: Int): Result<List<Series>> {
         return characterSeriesRemoteUseCase.getSeries(id)
     }
+
 }

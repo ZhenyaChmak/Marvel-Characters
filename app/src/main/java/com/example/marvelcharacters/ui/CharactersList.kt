@@ -23,11 +23,8 @@ class CharactersList : Fragment() {
 
     private val adapter by lazy {
         CharacterAdapter(requireContext()) {
-            findNavController().navigate(
-                CharactersListDirections.toCharacterDetails(
-                    it.id, it.name, it.photo
-                )
-            )
+            viewModel
+                .toCharacterDetails(it)
         }
     }
 
@@ -48,6 +45,17 @@ class CharactersList : Fragment() {
         binding.charactersListContainer.adapter = adapter
 
         scrollView(binding.charactersListContainer, adapter)
+
+        viewModel
+            .nextDetails
+            .onEach {
+                findNavController().navigate(
+                    CharactersListDirections.toCharacterDetails(
+                        it.id, it.name, it.photo
+                    )
+                )
+            }.launchIn(viewLifecycleOwner.lifecycleScope)
+
 
         viewModel
             .dataFlow
