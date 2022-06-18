@@ -15,4 +15,7 @@ internal interface CharacterDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCharacters(user: List<CharacterEntity>)
 
+    @Query("SELECT * FROM CharacterEntity LIMIT :limit OFFSET :offset")
+    suspend fun getUsersQuantity(limit: Int, offset: Int): List<CharacterEntity>
+
 }

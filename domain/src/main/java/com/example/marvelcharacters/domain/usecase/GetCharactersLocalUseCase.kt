@@ -7,8 +7,8 @@ class GetCharactersLocalUseCase(
     private val charactersLocalRepository: CharactersLocalRepository
 ) {
 
-    suspend operator fun invoke(character: List<Character>) {
-        charactersLocalRepository.insertCharacter(character)
+    suspend operator fun invoke(): List<Character> {
+        return charactersLocalRepository.getCharacters()
     }
 
 }

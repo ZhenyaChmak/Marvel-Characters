@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/study/Marvel-Characters/app/src/main/res/layout/fragment_character.xml" value="0.35208333333333336" />
         <entry key="..\:/study/Marvel-Characters/app/src/main/res/layout/fragment_character_comics.xml" value="0.35208333333333336" />
-        <entry key="..\:/study/Marvel-Characters/app/src/main/res/layout/fragment_character_details.xml" value="0.35208333333333336" />
+        <entry key="..\:/study/Marvel-Characters/app/src/main/res/layout/fragment_character_details.xml" value="0.1" />
+        <entry key="..\:/study/Marvel-Characters/app/src/main/res/layout/fragment_character_series.xml" value="0.11458333333333333" />
+        <entry key="..\:/study/Marvel-Characters/app/src/main/res/layout/fragment_character_stories.xml" value="0.11458333333333333" />
+        <entry key="..\:/study/Marvel-Characters/app/src/main/res/layout/fragment_characters_list.xml" value="0.35208333333333336" />
+        <entry key="..\:/study/Marvel-Characters/app/src/main/res/layout/fragment_container_bottom_navigation.xml" value="0.35208333333333336" />
         <entry key="..\:/study/Marvel-Characters/app/src/main/res/layout/loading.xml" value="0.33" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19074074074074074" />
         <entry key="..\:/study/projects/MarvelCharacters/app/src/main/res/drawable/background_ic_from_details.xml" value="0.19074074074074074" />

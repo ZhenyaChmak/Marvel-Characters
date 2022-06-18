@@ -1,6 +1,7 @@
 package com.example.marvelcharacters.adapter.comics
 
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.marvelcharacters.databinding.FragmentCharacterComicsBinding
 import com.example.marvelcharacters.domain.model.Comics
 
@@ -11,6 +12,8 @@ class ComicsViewHolder(
 
     fun bind(comics: Comics) {
         with(binding) {
+
+            photoComics.load(comics.photoComics)
 
             root.setOnClickListener {
                 onClickedComics(comics)

@@ -16,6 +16,7 @@ import com.example.marvelcharacters.adapter.comics.ComicsAdapter
 import com.example.marvelcharacters.adapter.series.SeriesAdapter
 import com.example.marvelcharacters.adapter.stories.StoriesAdapter
 import com.example.marvelcharacters.databinding.FragmentCharacterDetailsBinding
+import com.example.marvelcharacters.model.comics.ComicsListViewModel
 import com.example.marvelcharacters.model.detais.SeriesListViewModel
 import com.example.marvelcharacters.ui.details.series.SeriesDetails
 import kotlinx.coroutines.flow.launchIn
@@ -33,11 +34,14 @@ class CharacterDetails : Fragment() {
     private val viewModelSeries by viewModel<SeriesListViewModel>() {
         parametersOf(args.characterId)
     }
+    private val viewModelComics by viewModel<ComicsListViewModel>() {
+        parametersOf(args.characterId)
+    }
 
     private val adapterSeries by lazy {
         SeriesAdapter(requireContext()) {
             AlertDialog.Builder(requireContext())
-                .setTitle("ddasd")
+                .setTitle("Series")
                 .show()
             /*findNavController().navigate(
                 CharacterDetailsDirections.toSeriesDetails()
@@ -45,14 +49,16 @@ class CharacterDetails : Fragment() {
         }
     }
 
-    private val adapterComics by lazy{
-        ComicsAdapter(requireContext()){
-
+    private val adapterComics by lazy {
+        ComicsAdapter(requireContext()) {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Comics")
+                .show()
         }
     }
 
-    private val adapterStories by lazy{
-        StoriesAdapter(requireContext()){
+    private val adapterStories by lazy {
+        StoriesAdapter(requireContext()) {
 
         }
     }
@@ -75,6 +81,10 @@ class CharacterDetails : Fragment() {
         binding.seriesList.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
+        binding.comicsList.adapter = adapterComics
+        binding.comicsList.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
         binding.fromDetails.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -89,18 +99,39 @@ class CharacterDetails : Fragment() {
             .onEach {
                 it.fold(
                     onSuccess = {
-                        println()
                         adapterSeries.submitList(it)
                     },
                     onFailure = {
-                        println(it)
+                        AlertDialog.Builder(requireContext())
+                            //TODO string
+                            .setMessage("111111111d11111111111")
+                            .setCancelable(false)
+                            //TODO string
+                            .setPositiveButton("OK") { _, _ -> findNavController().navigateUp() }
+                            .show()
                     }
                 )
             }.launchIn(viewLifecycleOwner.lifecycleScope)
 
 
-
-
+        viewModelComics
+            .dataFlow
+            .onEach {
+                it.fold(
+                    onSuccess = {
+                        adapterComics.submitList(it)
+                    },
+                    onFailure = {
+                        AlertDialog.Builder(requireContext())
+                            //TODO string
+                            .setMessage("R.string.is_no_internet")
+                            .setCancelable(false)
+                            //TODO string
+                            .setPositiveButton("R.string.ok") { _, _ -> findNavController().navigateUp() }
+                            .show()
+                    }
+                )
+            }.launchIn(viewLifecycleOwner.lifecycleScope)
 
     }
 

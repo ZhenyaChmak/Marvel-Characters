@@ -1,5 +1,6 @@
 package com.example.marvelcharacters.data.di
 
+import com.example.marvelcharacters.data.repository.CharacterComicsRemoteRepositoryImpl
 import com.example.marvelcharacters.data.repository.CharactersLocalRepositoryImpl
 import com.example.marvelcharacters.data.repository.CharactersRemoteRepositoryImpl
 import com.example.marvelcharacters.domain.repository.CharacterSeriesRemoteRepository
@@ -8,7 +9,8 @@ import com.example.marvelcharacters.domain.repository.CharactersRemoteRepository
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
-import com.example.marvelcharacters.data.repository.CharacterSeriesRepositoryImpl
+import com.example.marvelcharacters.data.repository.CharacterSeriesRemoteRepositoryImpl
+import com.example.marvelcharacters.domain.repository.CharacterComicsRemoteRepository
 
 internal val repositoryModule = module {
 
@@ -20,8 +22,12 @@ internal val repositoryModule = module {
         bind<CharactersLocalRepository>()
     }
 
-    singleOf(::CharacterSeriesRepositoryImpl) {
+    singleOf(::CharacterSeriesRemoteRepositoryImpl) {
         bind<CharacterSeriesRemoteRepository>()
+    }
+
+    singleOf(::CharacterComicsRemoteRepositoryImpl) {
+        bind<CharacterComicsRemoteRepository>()
     }
 
 }

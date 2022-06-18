@@ -8,4 +8,6 @@ interface CharactersLocalRepository {
 
     suspend fun insertCharacter(character: List<Character>)
 
+    suspend fun getCharactersQuantity(limit: Int, offset: Int): List<Character>
+
 }

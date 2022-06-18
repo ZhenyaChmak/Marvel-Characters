@@ -24,4 +24,11 @@ internal class CharactersLocalRepositoryImpl(
             })
     }
 
+    override suspend fun getCharactersQuantity(limit: Int, offset: Int): List<Character> {
+        return characterDao.getUsersQuantity(limit, offset)
+            .map {
+                it.toDomainModel()
+            }
+    }
+
 }

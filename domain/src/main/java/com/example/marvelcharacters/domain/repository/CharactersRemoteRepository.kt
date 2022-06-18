@@ -4,6 +4,6 @@ import com.example.marvelcharacters.domain.model.Character
 
 interface CharactersRemoteRepository {
 
-    suspend fun getCharacters(): Result<List<Character>>
+    suspend fun getCharacters(limit: Int, offset: Int): Result<List<Character>>
 
 }

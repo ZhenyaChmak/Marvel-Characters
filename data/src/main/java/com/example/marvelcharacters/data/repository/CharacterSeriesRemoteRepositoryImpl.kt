@@ -5,7 +5,7 @@ import com.example.marvelcharacters.data.mapper.toDomainModel
 import com.example.marvelcharacters.domain.model.Series
 import com.example.marvelcharacters.domain.repository.CharacterSeriesRemoteRepository
 
-internal class CharacterSeriesRepositoryImpl(
+internal class CharacterSeriesRemoteRepositoryImpl(
     private val githubApi: GithubApi
 ) : CharacterSeriesRemoteRepository {
 
@@ -13,6 +13,7 @@ internal class CharacterSeriesRepositoryImpl(
         return runCatching {
             githubApi.getSeries(id)
         }.map {
+            println()
             it.data.results.toDomainModel()
         }
     }

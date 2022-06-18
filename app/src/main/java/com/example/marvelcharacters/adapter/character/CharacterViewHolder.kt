@@ -1,9 +1,9 @@
 package com.example.marvelcharacters.adapter.character
 
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.example.marvelcharacters.databinding.FragmentCharacterBinding
 import com.example.marvelcharacters.domain.model.Character
+import com.squareup.picasso.Picasso
 
 class CharacterViewHolder(
     private val binding: FragmentCharacterBinding,
@@ -13,7 +13,8 @@ class CharacterViewHolder(
     fun bind(character: Character) {
         with(binding) {
             characterName.text = character.name
-            itemCharacterPhoto.load(character.photo)
+
+            Picasso.with(root.context).load(character.photo).into(itemCharacterPhoto)
 
             details.setOnClickListener {
                 onClickedCharacter(character)

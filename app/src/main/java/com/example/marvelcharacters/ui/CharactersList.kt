@@ -1,15 +1,21 @@
 package com.example.marvelcharacters.ui
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.marvelcharacters.adapter.character.CharacterAdapter
 import com.example.marvelcharacters.databinding.FragmentCharactersListBinding
 import com.example.marvelcharacters.model.CharacterListViewModel
+import com.example.marvelcharacters.model.Lce
+import com.yarolegovich.discretescrollview.DiscreteScrollView
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -42,12 +48,12 @@ class CharactersList : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.charactersListContainer.adapter = adapter
+       // binding.charactersListContainer.adapter = adapter
 
         scrollView(binding.charactersListContainer, adapter)
 
         viewModel
-            .nextDetails
+            .toCharacterDetails
             .onEach {
                 findNavController().navigate(
                     CharactersListDirections.toCharacterDetails(
@@ -57,25 +63,85 @@ class CharactersList : Fragment() {
             }.launchIn(viewLifecycleOwner.lifecycleScope)
 
 
-        viewModel
-            .dataFlow
-            .onEach {
-                it.fold(
-                    onSuccess = {
-                        println()
-                        adapter.submitList(it)
-                    },
-                    onFailure = {
-                        println(it)
-                    }
-                )
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.onRefresh()
+          /*  binding.swipeRefresh.isRefreshing = false*/
+        }
+
+       // val layoutManager = LinearLayoutManager(requireContext())
+        binding.charactersListContainer
+            .addPaginationScrollListener(binding.charactersListContainer, ITEMS_TO_LOADING) {
+                viewModel.onLoadMore()
             }
-            .launchIn(viewLifecycleOwner.lifecycleScope)
+
+        viewModel
+            .getData
+            .onEach { list ->
+                if (list.isEmpty()) {
+                    AlertDialog.Builder(requireContext())
+                        .setMessage("azdzsdfsdfsdfsdfsd")
+                        .show()
+                } else {
+                    adapter.submitList(
+                        list.map {
+                            Lce.Element(it)
+                        } + Lce.Loading)
+                }
+            }.launchIn(viewLifecycleOwner.lifecycleScope)
+
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+    companion object {
+        private const val ITEMS_TO_LOADING = 10
+
+    }
 }
 
+fun RecyclerView.addPaginationScrollListener(
+    view: DiscreteScrollView,
+    itemsToLoading: Int,
+    onLoadMore: () -> Unit
+) {
+    addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+
+            /*val totalItemCount = layoutManager.itemCount
+            val lastVisibility = layoutManager.findLastVisibleItemPosition()
+
+            if (dy != 0 && totalItemCount <= (lastVisibility + itemsToLoading)) {
+                recyclerView.post(onLoadMore)
+            }*/
+
+            val totalItemCount = view.currentItem
+            if(totalItemCount == 8){
+                recyclerView.post(onLoadMore)
+            }
+        }
+    })
+}
+
+
+/*viewModel
+                 .dataFlow
+                 .onEach {
+                     it.fold(
+                         onSuccess = {
+                             println()
+                                 binding.loading.isVisible = false
+                             adapter.submitList(it.map {
+                                 Lce.Element(it)
+                             })
+                         },
+                         onFailure = {
+                             println(it)
+                         }
+                     )
+                 }
+                 .launchIn(viewLifecycleOwner.lifecycleScope)*/

@@ -15,5 +15,6 @@
     <string name="character_name">Character_name</string>
     <string name="background_ic_from_details">background_ic_from_details</string>
     <string name="background_ic_to_details_character">background_ic_to_details_character</string>
+    <string name="photo_comics">Photo_comics</string>
 
 </resources>
