@@ -1,5 +1,6 @@
 package com.example.marvelcharacters.data.di
 
+import com.example.marvelcharacters.data.BuildConfig
 import com.example.marvelcharacters.data.api.GithubApi
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
@@ -16,7 +17,7 @@ internal val networkModule = module {
 
     single {
         Retrofit.Builder()
-            .baseUrl("https://gateway.marvel.com/")
+            .baseUrl(BuildConfig.NETWORK_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(get())
             .build()

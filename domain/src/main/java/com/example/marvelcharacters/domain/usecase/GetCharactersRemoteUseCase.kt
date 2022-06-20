@@ -7,8 +7,8 @@ class GetCharactersRemoteUseCase(
     private val charactersRemoteRepository: CharactersRemoteRepository
 ) {
 
-    suspend operator fun invoke(limit: Int, offset: Int): Result<List<Character>> {
-        return charactersRemoteRepository.getCharacters(limit, offset)
+    suspend operator fun invoke(hash: String, limit: Int, offset: Int): Result<List<Character>> {
+        return charactersRemoteRepository.getCharacters(hash, limit, offset)
     }
 
 }

@@ -3,6 +3,7 @@ package com.example.marvelcharacters.model
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.marvelcharacters.data.BuildConfig
 import com.example.marvelcharacters.domain.model.Character
 import com.example.marvelcharacters.domain.model.LoadState
 import com.example.marvelcharacters.domain.usecase.GetCharactersInsertLocalUseCase
@@ -60,7 +61,7 @@ class CharacterListViewModel(
             }
             .filter { isLoading }
             .map {
-                remoteUseCase(currentPage * PAGE_SIZE, 0)
+                remoteUseCase(BuildConfig.HASH_KEY,currentPage * PAGE_SIZE, 0,)
                     .fold(
                         onSuccess = {
                             insertLocalUseCase(it)
@@ -79,7 +80,7 @@ class CharacterListViewModel(
             }
             .onStart {
                 if (localUseCase().isEmpty()) {
-                    remoteUseCase(currentPage * PAGE_SIZE, 0)
+                    remoteUseCase(BuildConfig.HASH_KEY,currentPage * PAGE_SIZE, 0)
                         .fold(onSuccess = {
                             insertLocalUseCase(it)
                             emit(quantityLocalUseCase(currentPage * PAGE_SIZE, 0))

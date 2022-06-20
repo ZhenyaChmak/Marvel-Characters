@@ -17,6 +17,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
+        buildConfigField("String", "NETWORK_URL", NETWORK_URL)
+        buildConfigField("String", "HASH_KEY", HASH_KEY)
 
     }
 

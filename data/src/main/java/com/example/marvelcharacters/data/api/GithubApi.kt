@@ -11,10 +11,11 @@ import retrofit2.http.Query
 
 internal interface GithubApi {
 
-    @GET("v1/public/characters?ts=1&apikey=652c52b7418522539eec74f2dee65335&hash=f4b5ec405ecf15e5f0e917386cd1bd1b")
+    @GET("v1/public/characters?ts=1&apikey=652c52b7418522539eec74f2dee65335")
     suspend fun getCharacters(
+        @Query("hash") hash: String,
         @Query("limit") limit: Int,
-        @Query("offset") offset: Int
+        @Query("offset") offset: Int,
     ): CharacterDTO
 
 

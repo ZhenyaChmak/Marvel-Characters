@@ -56,7 +56,7 @@
 
     <fragment
         android:id="@+id/google_map"
-        android:name="com.example.marvelcharacters.ui.GoogleMap"
+        android:name="com.example.marvelcharacters.ui.map.CustomGoogleMap"
         tools:layout="@layout/fragment_google_map" />
 
 </navigation>
