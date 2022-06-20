@@ -12,22 +12,33 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.marvelcharacters.R
 import com.example.marvelcharacters.databinding.FragmentGoogleMapBinding
 import com.example.marvelcharacters.model.map.MapViewModel
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import android.widget.Toast
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
+
+import com.google.android.gms.maps.model.Marker
+
+
+
 
 class CustomGoogleMap : Fragment() {
 
     private var _binding: FragmentGoogleMapBinding? = null
     private val binding get() = requireNotNull(_binding)
 
-    private val name = "Germany"
+    private val name = "Rwanda"
 
     private val viewModelMap by viewModel<MapViewModel> {
         parametersOf(name)
@@ -63,39 +74,62 @@ class CustomGoogleMap : Fragment() {
             googleMap = remoteGoogleMap.apply {
                 uiSettings.isZoomControlsEnabled = true
                 uiSettings.isMyLocationButtonEnabled = true
+                uiSettings.isCompassEnabled = true
             }
-
+            //TODO custom
             remoteGoogleMap.isMyLocationEnabled = checkLocationPermission()
-
 
             viewModelMap
                 .dataFlow
                 .onEach {
                     println()
                     it.fold(
-                        onSuccess = {
-                            it.map {
-                                googleMap?.addMarker(
-                                    MarkerOptions()
-                                        .title(it.name)
-                                        .position(
-                                            LatLng(it.latitude, it.longitude)
-                                        )
+                        onSuccess = { list ->
+                            list.map { country ->
+                                googleMap?.customAddMarker(
+                                    latitude = country.latitude,
+                                    longitude = country.longitude,
+                                    title = country.name
+                                )
+
+                                googleMap?.customAddMarker(
+                                    latitude = 51.00,
+                                    longitude = 9.0,
+                                    title = "Germany"
+                                )
+
+                              googleMap?.setOnMarkerClickListener(OnMarkerClickListener { marker ->
+
+
+                                  val markerName = marker.title
+                                  Toast.makeText(
+                                      context,
+                                      "Clicked location is $markerName",
+                                      Toast.LENGTH_SHORT
+                                  ).show()
+                                  false
+
+                              })
+
+                                googleMap?.customAnimateCamera(
+                                    latitude = country.latitude,
+                                    longitude = country.longitude,
+                                    CAMERA_ZOOM
                                 )
                             }
                         },
                         onFailure = {
                             AlertDialog.Builder(requireContext())
                                 .setMessage("Failure")
+                                .setCancelable(false)
+                                .setPositiveButton("Ok") { _, _ -> findNavController().navigateUp() }
                                 .show()
                         }
                     )
                 }.launchIn(viewLifecycleOwner.lifecycleScope)
-
         }
 
         binding.mapView.onCreate(savedInstanceState)
-
 
     }
 
@@ -128,4 +162,35 @@ class CustomGoogleMap : Fragment() {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
+    companion object {
+        private const val CAMERA_ZOOM = 5.0f
+    }
+
 }
+
+private fun GoogleMap.customAnimateCamera(
+    latitude: Double,
+    longitude: Double,
+    cameraZoom: Float
+) = animateCamera(
+    CameraUpdateFactory.newCameraPosition(
+        CameraPosition.fromLatLngZoom(
+            LatLng(
+                latitude,
+                longitude
+            ), cameraZoom
+        )
+    )
+)
+
+private fun GoogleMap.customAddMarker(
+    latitude: Double,
+    longitude: Double,
+    title: String
+) = addMarker(
+    MarkerOptions()
+        .title(title)
+        .position(
+            LatLng(latitude, longitude)
+        )
+)

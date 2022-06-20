@@ -9,9 +9,9 @@ internal class MapRemoteRepositoryImpl(
     private val githubApiMap : GithubApiMap
 ): MapRemoteRepository {
 
-    override suspend fun getCountry(/*name: String*/): Result<List<Country>> {
+    override suspend fun getCountry(name: String): Result<List<Country>> {
         return runCatching {
-            githubApiMap.getCountry(/*name*/)
+            githubApiMap.getCountry(name)
         }.map {
             it.toDomainModule()
         }

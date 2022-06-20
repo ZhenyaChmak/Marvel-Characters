@@ -17,7 +17,7 @@ internal val networkMapModule = module {
 
     single {
         Retrofit.Builder()
-            .baseUrl("https://restcountries.com/v3.1/name/")
+            .baseUrl(BuildConfig.NETWORK_MAP_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(get())
             .build()

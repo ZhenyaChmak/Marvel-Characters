@@ -18,7 +18,7 @@ android {
 
         buildConfigField("String", "NETWORK_URL", NETWORK_URL)
         buildConfigField("String", "HASH_KEY", HASH_KEY)
-        buildConfigField("String", "NETWORK_MAP_UPL", NETWORT_MAP_URL)
+        buildConfigField("String", "NETWORK_MAP_URL", NETWORT_MAP_URL)
     }
 
     buildTypes {

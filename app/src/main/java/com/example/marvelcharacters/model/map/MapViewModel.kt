@@ -13,7 +13,7 @@ class MapViewModel(
 ) : ViewModel() {
 
     val dataFlow = flow {
-        emit(mapRemoteUseCase(/*name*/))
+        emit(mapRemoteUseCase(name))
     }.shareIn(
         scope = viewModelScope,
         replay = 1,

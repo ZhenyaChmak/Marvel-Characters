@@ -37,6 +37,7 @@ class ContainerBottomNavigation : Fragment() {
             when (destination.id) {
                 R.id.characters_list -> binding.bottomNavigation.visibility = View.VISIBLE
                 R.id.character_details -> binding.bottomNavigation.visibility = View.GONE
+                R.id.google_map -> binding.bottomNavigation.visibility = View.GONE
             }
         }
     }
