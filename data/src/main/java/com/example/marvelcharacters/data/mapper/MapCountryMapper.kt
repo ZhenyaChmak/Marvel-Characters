@@ -12,6 +12,8 @@ internal fun List<CountryDTO>.toDomainModule(): List<Country> {
 
 internal fun CountryDTO.toDomainModule(): Country {
     return Country(
-        name = name.name
+        name = name.name,
+        latitude = infoLatLng.latLng[0],
+        longitude = infoLatLng.latLng[1]
     )
 }

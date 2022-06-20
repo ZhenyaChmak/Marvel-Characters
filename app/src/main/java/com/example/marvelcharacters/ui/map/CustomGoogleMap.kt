@@ -33,7 +33,6 @@ class CustomGoogleMap : Fragment() {
         parametersOf(name)
     }
 
-    //  private val locationService by inject<LocationService>()
     private var googleMap: GoogleMap? = null
 
     @SuppressLint("MissingPermission")
@@ -58,9 +57,6 @@ class CustomGoogleMap : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
-
         mapPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
 
         binding.mapView.getMapAsync { remoteGoogleMap ->
@@ -83,7 +79,7 @@ class CustomGoogleMap : Fragment() {
                                     MarkerOptions()
                                         .title(it.name)
                                         .position(
-                                            LatLng(52.52, 13.4)
+                                            LatLng(it.latitude, it.longitude)
                                         )
                                 )
                             }
