@@ -18,4 +18,6 @@ internal val useCaseModule = module {
 
     singleOf(::GetCharactersRemoteUseCase)
 
+    singleOf(::GetMapRemoteUseCase)
+
 }

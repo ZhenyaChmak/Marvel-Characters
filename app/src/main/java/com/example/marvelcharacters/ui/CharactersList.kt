@@ -77,6 +77,7 @@ class CharactersList : Fragment() {
         viewModel
             .getData
             .onEach { list ->
+                println()
                 if (list.isEmpty()) {
                     AlertDialog.Builder(requireContext())
                         .setMessage("azdzsdfsdfsdfsdfsd")

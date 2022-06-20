@@ -9,7 +9,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-internal interface GithubApi {
+internal interface GithubApiMarvel {
 
     @GET("v1/public/characters?ts=1&apikey=652c52b7418522539eec74f2dee65335")
     suspend fun getCharacters(
@@ -17,7 +17,6 @@ internal interface GithubApi {
         @Query("limit") limit: Int,
         @Query("offset") offset: Int,
     ): CharacterDTO
-
 
     @GET("v1/public/characters/{id}/series?ts=1&apikey=652c52b7418522539eec74f2dee65335&hash=f4b5ec405ecf15e5f0e917386cd1bd1b")
     suspend fun getSeries(
@@ -28,4 +27,5 @@ internal interface GithubApi {
     suspend fun getComics(
         @Path("id") id: Int
     ): ComicsDTO
+
 }

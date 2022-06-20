@@ -79,7 +79,16 @@ class CharacterListViewModel(
                 isLoading = false
             }
             .onStart {
-                if (localUseCase().isEmpty()) {
+                remoteUseCase(BuildConfig.HASH_KEY,currentPage * PAGE_SIZE, 0)
+                    .fold(onSuccess = {
+                        insertLocalUseCase(it)
+                        emit(it)
+                    },
+                        onFailure = {
+                            emit(emptyList())
+                        })
+
+                /*if (localUseCase().isEmpty()) {
                     remoteUseCase(BuildConfig.HASH_KEY,currentPage * PAGE_SIZE, 0)
                         .fold(onSuccess = {
                             insertLocalUseCase(it)
@@ -90,7 +99,7 @@ class CharacterListViewModel(
                             })
                 } else {
                     emit(quantityLocalUseCase(currentPage * PAGE_SIZE, 0))
-                }
+                }*/
             }
 
     companion object {

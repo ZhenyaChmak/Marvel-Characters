@@ -2,6 +2,7 @@ package com.example.marvelcharacters.ui.map
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,15 +11,27 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.marvelcharacters.databinding.FragmentGoogleMapBinding
+import com.example.marvelcharacters.model.map.MapViewModel
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import org.koin.android.ext.android.inject
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class CustomGoogleMap : Fragment() {
+
     private var _binding: FragmentGoogleMapBinding? = null
     private val binding get() = requireNotNull(_binding)
+
+    private val name = "Germany"
+
+    private val viewModelMap by viewModel<MapViewModel> {
+        parametersOf(name)
+    }
 
     //  private val locationService by inject<LocationService>()
     private var googleMap: GoogleMap? = null
@@ -46,6 +59,8 @@ class CustomGoogleMap : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+
+
         mapPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
 
         binding.mapView.getMapAsync { remoteGoogleMap ->
@@ -57,16 +72,34 @@ class CustomGoogleMap : Fragment() {
             remoteGoogleMap.isMyLocationEnabled = checkLocationPermission()
 
 
-            googleMap?.addMarker(
-                MarkerOptions()
-                    .title("dddddddddd")
-                    .position(
-                        LatLng(48.4357, 28.9165)
+            viewModelMap
+                .dataFlow
+                .onEach {
+                    println()
+                    it.fold(
+                        onSuccess = {
+                            it.map {
+                                googleMap?.addMarker(
+                                    MarkerOptions()
+                                        .title(it.name)
+                                        .position(
+                                            LatLng(52.52, 13.4)
+                                        )
+                                )
+                            }
+                        },
+                        onFailure = {
+                            AlertDialog.Builder(requireContext())
+                                .setMessage("Failure")
+                                .show()
+                        }
                     )
-            )
+                }.launchIn(viewLifecycleOwner.lifecycleScope)
+
         }
 
         binding.mapView.onCreate(savedInstanceState)
+
 
     }
 

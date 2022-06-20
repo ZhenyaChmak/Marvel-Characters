@@ -1,16 +1,14 @@
 package com.example.marvelcharacters.data.di
 
 import com.example.marvelcharacters.data.repository.CharacterComicsRemoteRepositoryImpl
+import com.example.marvelcharacters.data.repository.CharacterSeriesRemoteRepositoryImpl
 import com.example.marvelcharacters.data.repository.CharactersLocalRepositoryImpl
 import com.example.marvelcharacters.data.repository.CharactersRemoteRepositoryImpl
-import com.example.marvelcharacters.domain.repository.CharacterSeriesRemoteRepository
-import com.example.marvelcharacters.domain.repository.CharactersLocalRepository
-import com.example.marvelcharacters.domain.repository.CharactersRemoteRepository
+import com.example.marvelcharacters.data.repository.MapRemoteRepositoryImpl
+import com.example.marvelcharacters.domain.repository.*
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
-import com.example.marvelcharacters.data.repository.CharacterSeriesRemoteRepositoryImpl
-import com.example.marvelcharacters.domain.repository.CharacterComicsRemoteRepository
 
 internal val repositoryModule = module {
 
@@ -28,6 +26,10 @@ internal val repositoryModule = module {
 
     singleOf(::CharacterComicsRemoteRepositoryImpl) {
         bind<CharacterComicsRemoteRepository>()
+    }
+
+    singleOf(::MapRemoteRepositoryImpl) {
+        bind<MapRemoteRepository>()
     }
 
 }
