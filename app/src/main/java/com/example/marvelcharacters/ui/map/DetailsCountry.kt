@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import coil.load
 import com.example.marvelcharacters.R
 import com.example.marvelcharacters.databinding.FragmentGoogleMapDetailsCountryBinding
 import com.example.marvelcharacters.model.map.DetailsCountryViewModel
@@ -43,12 +44,15 @@ class DetailsCountry : Fragment() {
             .dataFlow
             .onEach {
                 it.fold(
-                    onSuccess = { list ->
-                        list.map { country ->
-                            binding.nameCountry.text = country.name
-
-
-
+                    onSuccess = { listCountry ->
+                        listCountry.map { country ->
+                            with(binding) {
+                                flag.load(country.flag)
+                                nameCountry.text = country.name
+                                regionDetails.text = country.region
+                                capitalDetails.text = country.capital
+                                timezoneDetails.text = country.timezones
+                            }
                         }
                     },
                     onFailure = {
@@ -61,10 +65,14 @@ class DetailsCountry : Fragment() {
                 )
             }.launchIn(viewLifecycleOwner.lifecycleScope)
 
+        binding.fromMap.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }

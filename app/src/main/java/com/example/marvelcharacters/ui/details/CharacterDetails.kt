@@ -11,14 +11,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
-import com.example.marvelcharacters.R
 import com.example.marvelcharacters.adapter.comics.ComicsAdapter
 import com.example.marvelcharacters.adapter.series.SeriesAdapter
 import com.example.marvelcharacters.adapter.stories.StoriesAdapter
 import com.example.marvelcharacters.databinding.FragmentCharacterDetailsBinding
 import com.example.marvelcharacters.model.comics.ComicsListViewModel
 import com.example.marvelcharacters.model.detais.SeriesListViewModel
-import com.example.marvelcharacters.ui.details.series.SeriesDetails
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel

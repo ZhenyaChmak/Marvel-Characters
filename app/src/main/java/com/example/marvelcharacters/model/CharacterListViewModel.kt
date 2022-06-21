@@ -1,6 +1,5 @@
 package com.example.marvelcharacters.model
 
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.marvelcharacters.data.BuildConfig

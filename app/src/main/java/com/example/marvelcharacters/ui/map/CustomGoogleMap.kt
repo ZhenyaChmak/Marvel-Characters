@@ -25,9 +25,6 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import android.widget.Toast
-import com.example.marvelcharacters.ui.CharactersListDirections
-import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
 
 class CustomGoogleMap : Fragment() {
 
@@ -90,23 +87,6 @@ class CustomGoogleMap : Fragment() {
                                     title = country.name
                                 )
 
-
-                                googleMap?.setOnMarkerClickListener { marker ->
-                                    /* viewModelMap
-                                         .toDetailsCountry
-                                         .onEach {*/
-                                    findNavController().navigate(
-                                        CustomGoogleMapDirections.toDetailsCountry(country.name)
-                                    )
-                                    /* }
-                                     .launchIn(viewLifecycleOwner.lifecycleScope)*/
-                                    false
-                                }
-
-
-
-
-
                                 googleMap?.customAnimateCamera(
                                     latitude = country.latitude,
                                     longitude = country.longitude,
@@ -124,10 +104,21 @@ class CustomGoogleMap : Fragment() {
                     )
                 }.launchIn(viewLifecycleOwner.lifecycleScope)
 
-
+            googleMap?.setOnMarkerClickListener { _ ->
+                viewModelMap
+                    .nextDetailsCountry
+                    .onEach {
+                        findNavController().navigate(
+                            CustomGoogleMapDirections.toDetailsCountry(it.name)
+                        )
+                    }
+                    .launchIn(viewLifecycleOwner.lifecycleScope)
+                false
+            }
         }
 
         binding.mapView.onCreate(savedInstanceState)
+
 
     }
 

@@ -14,9 +14,11 @@ class MapViewModel(
 ) : ViewModel() {
 
     private val _toDetailsCountry = MutableSharedFlow<Country>(
-        extraBufferCapacity = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST
+        replay = 1,
+        extraBufferCapacity = 0,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST
     )
-    val toDetailsCountry = _toDetailsCountry.asSharedFlow()
+    val nextDetailsCountry = _toDetailsCountry.asSharedFlow()
 
     fun toDetailsCountry(country: Country) = viewModelScope
         .launch {

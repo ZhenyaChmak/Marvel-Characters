@@ -5,7 +5,7 @@
     android:id="@+id/item_country_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/background800">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view_country"
@@ -57,7 +57,7 @@
                 android:layout_marginBottom="15dp"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
                 android:textColor="@color/black"
-                android:textSize="32sp"
+                android:textSize="48sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -75,79 +75,96 @@
         app:layout_constraintGuide_begin="10dp" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_90"
+        android:id="@+id/guideline_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="90dp" />
+        app:layout_constraintStart_toEndOf="@+id/timezone" />
 
     <TextView
-        android:id="@+id/official_name"
+        android:id="@+id/region"
         android:layout_width="wrap_content"
+
+
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/official_name"
+        android:text="@string/region"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/card_view_country" />
 
     <TextView
-        android:id="@+id/region"
-        android:layout_width="wrap_content"
+        android:id="@+id/region_details"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="@string/region"
+        android:gravity="start"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:textColor="@color/white"
         android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/official_name" />
+        app:layout_constraintBaseline_toBaselineOf="@id/region"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/region"
+        app:layout_constraintStart_toStartOf="@id/guideline_details"
+        tools:text="@string/region" />
 
     <TextView
         android:id="@+id/capital"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:text="@string/capital"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/region" />
 
     <TextView
+        android:id="@+id/capital_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/capital"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/capital"
+        app:layout_constraintStart_toStartOf="@id/guideline_details"
+        tools:text="@string/capital" />
+
+    <TextView
         android:id="@+id/timezone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:text="@string/timezones"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/capital" />
 
-   <!-- <TextView
-        android:id="@+id/page_http"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:autoLink="web"
-        android:linksClickable="true"
-        android:textColorLink="#EBD11B1B"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideline_90"
-        tools:text="Https" />
-
     <TextView
-        android:id="@+id/name_details"
+        android:id="@+id/timezone_details"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="32sp"
+        android:gravity="start"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/timezone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideline_90"
-        tools:text="UserName" />-->
+        app:layout_constraintStart_toEndOf="@+id/timezone"
+        app:layout_constraintStart_toStartOf="@id/guideline_details"
+        tools:text="@string/timezones" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

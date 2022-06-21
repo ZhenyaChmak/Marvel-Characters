@@ -48,7 +48,7 @@ class CharactersList : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       // binding.charactersListContainer.adapter = adapter
+        // binding.charactersListContainer.adapter = adapter
 
         scrollView(binding.charactersListContainer, adapter)
 
@@ -65,10 +65,10 @@ class CharactersList : Fragment() {
 
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.onRefresh()
-          /*  binding.swipeRefresh.isRefreshing = false*/
+            /*  binding.swipeRefresh.isRefreshing = false*/
         }
 
-       // val layoutManager = LinearLayoutManager(requireContext())
+        // val layoutManager = LinearLayoutManager(requireContext())
         binding.charactersListContainer
             .addPaginationScrollListener(binding.charactersListContainer, ITEMS_TO_LOADING) {
                 viewModel.onLoadMore()
@@ -115,7 +115,6 @@ fun RecyclerView.addPaginationScrollListener(
 
             /*val totalItemCount = layoutManager.itemCount
             val lastVisibility = layoutManager.findLastVisibleItemPosition()
-
             if (dy != 0 && totalItemCount <= (lastVisibility + itemsToLoading)) {
                 recyclerView.post(onLoadMore)
             }*/
