@@ -16,5 +16,13 @@
     <string name="background_ic_from_details">background_ic_from_details</string>
     <string name="background_ic_to_details_character">background_ic_to_details_character</string>
     <string name="photo_comics">Photo_comics</string>
+    <string name="failure">Failure</string>
+    <string name="ok">OK</string>
+    <string name="photo_flag">Photo_flag</string>
+    <string name="from_map">From_map</string>
+    <string name="region">Region:</string>
+    <string name="official_name">Official name:</string>
+    <string name="capital">Capital:</string>
+    <string name="timezones">Timezones:</string>
 
 </resources>

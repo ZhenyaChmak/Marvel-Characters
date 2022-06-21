@@ -13,7 +13,12 @@ internal fun List<CountryDTO>.toDomainModule(): List<Country> {
 internal fun CountryDTO.toDomainModule(): Country {
     return Country(
         name = name.name,
+        official_name = name.official,
         latitude = infoLatLng.latLng[0],
-        longitude = infoLatLng.latLng[1]
+        longitude = infoLatLng.latLng[1],
+        region = region,
+        capital = capital[0],
+        timezones = timezones[0],
+        flag = flags.svg
     )
 }

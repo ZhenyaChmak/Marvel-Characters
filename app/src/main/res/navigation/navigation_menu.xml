@@ -39,24 +39,24 @@
     <fragment
         android:id="@+id/series_details"
         android:name="com.example.marvelcharacters.ui.details.series.SeriesDetails"
-        tools:layout="@layout/fragment_character_series_details">
-
-    </fragment>
-
-
-    <!--<argument
-        android:name="photo_series_details"
-        app:argType="String" />
-    <argument
-        android:name="name_series_details"
-        app:argType="String" />
-    <argument
-        android:name="description_series_details"
-        app:argType="String" />-->
+        tools:layout="@layout/fragment_character_series_details" />
 
     <fragment
         android:id="@+id/google_map"
         android:name="com.example.marvelcharacters.ui.map.CustomGoogleMap"
-        tools:layout="@layout/fragment_google_map" />
+        tools:layout="@layout/fragment_google_map">
+        <action
+            android:id="@+id/to_detailsCountry"
+            app:destination="@+id/details_country" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/details_country"
+        android:name="com.example.marvelcharacters.ui.map.DetailsCountry"
+        tools:layout="@layout/fragment_google_map_details_country">
+        <argument
+            android:name="country_name"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

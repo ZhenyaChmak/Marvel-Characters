@@ -3,4 +3,6 @@
     <string name="height_item_character_photo">9:16</string>
     <string name="height_item_character_detail_photo">11:10</string>
     <string name="height_photo_series">9:12</string>
+    <string name="height_item_country_photo">11:10</string>
+
 </resources>

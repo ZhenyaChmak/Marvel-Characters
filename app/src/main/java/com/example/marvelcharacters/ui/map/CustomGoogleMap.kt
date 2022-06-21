@@ -26,12 +26,8 @@ import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import android.widget.Toast
+import com.example.marvelcharacters.ui.CharactersListDirections
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
-
-import com.google.android.gms.maps.model.Marker
-
-
-
 
 class CustomGoogleMap : Fragment() {
 
@@ -82,34 +78,34 @@ class CustomGoogleMap : Fragment() {
             viewModelMap
                 .dataFlow
                 .onEach {
-                    println()
                     it.fold(
                         onSuccess = { list ->
                             list.map { country ->
+                                viewModelMap
+                                    .toDetailsCountry(country)
+
                                 googleMap?.customAddMarker(
                                     latitude = country.latitude,
                                     longitude = country.longitude,
                                     title = country.name
                                 )
 
-                                googleMap?.customAddMarker(
-                                    latitude = 51.00,
-                                    longitude = 9.0,
-                                    title = "Germany"
-                                )
 
-                              googleMap?.setOnMarkerClickListener(OnMarkerClickListener { marker ->
+                                googleMap?.setOnMarkerClickListener { marker ->
+                                    /* viewModelMap
+                                         .toDetailsCountry
+                                         .onEach {*/
+                                    findNavController().navigate(
+                                        CustomGoogleMapDirections.toDetailsCountry(country.name)
+                                    )
+                                    /* }
+                                     .launchIn(viewLifecycleOwner.lifecycleScope)*/
+                                    false
+                                }
 
 
-                                  val markerName = marker.title
-                                  Toast.makeText(
-                                      context,
-                                      "Clicked location is $markerName",
-                                      Toast.LENGTH_SHORT
-                                  ).show()
-                                  false
 
-                              })
+
 
                                 googleMap?.customAnimateCamera(
                                     latitude = country.latitude,
@@ -120,13 +116,15 @@ class CustomGoogleMap : Fragment() {
                         },
                         onFailure = {
                             AlertDialog.Builder(requireContext())
-                                .setMessage("Failure")
+                                .setMessage(R.string.failure)
                                 .setCancelable(false)
-                                .setPositiveButton("Ok") { _, _ -> findNavController().navigateUp() }
+                                .setPositiveButton(R.string.ok) { _, _ -> findNavController().navigateUp() }
                                 .show()
                         }
                     )
                 }.launchIn(viewLifecycleOwner.lifecycleScope)
+
+
         }
 
         binding.mapView.onCreate(savedInstanceState)
