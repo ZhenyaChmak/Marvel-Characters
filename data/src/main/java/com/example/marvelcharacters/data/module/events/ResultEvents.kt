@@ -1,12 +1,12 @@
-package com.example.marvelcharacters.data.module.comics
+package com.example.marvelcharacters.data.module.events
 
 import com.example.marvelcharacters.data.module.Thumbnail
 import com.google.gson.annotations.SerializedName
 
-internal data class ResultComics(
+internal data class ResultEvents(
     val id: Int,
     @SerializedName("thumbnail")
-    val photoComics: Thumbnail,
+    val photoEvents: Thumbnail,
     val description: String,
-    val title : String
+    val title: String
 )

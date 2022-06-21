@@ -13,6 +13,7 @@ internal fun ResultSeries.toDomainModel(): Series {
     return Series(
         id = id,
         photoSeries = photoSeries.path + "." + photoSeries.extension,
-        description = description
+        description = description,
+        title = title
     )
 }

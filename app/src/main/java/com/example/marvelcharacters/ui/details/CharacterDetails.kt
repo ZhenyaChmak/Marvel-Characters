@@ -11,12 +11,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
+import com.example.marvelcharacters.R
 import com.example.marvelcharacters.adapter.comics.ComicsAdapter
+import com.example.marvelcharacters.adapter.events.EventsAdapter
 import com.example.marvelcharacters.adapter.series.SeriesAdapter
-import com.example.marvelcharacters.adapter.stories.StoriesAdapter
 import com.example.marvelcharacters.databinding.FragmentCharacterDetailsBinding
 import com.example.marvelcharacters.model.comics.ComicsListViewModel
 import com.example.marvelcharacters.model.detais.SeriesListViewModel
+import com.example.marvelcharacters.model.events.EventsListViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -33,6 +35,9 @@ class CharacterDetails : Fragment() {
         parametersOf(args.characterId)
     }
     private val viewModelComics by viewModel<ComicsListViewModel>() {
+        parametersOf(args.characterId)
+    }
+    private val viewModelEvents by viewModel<EventsListViewModel> {
         parametersOf(args.characterId)
     }
 
@@ -55,9 +60,11 @@ class CharacterDetails : Fragment() {
         }
     }
 
-    private val adapterStories by lazy {
-        StoriesAdapter(requireContext()) {
-
+    private val adapterEvents by lazy {
+        EventsAdapter(requireContext()) {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Events")
+                .show()
         }
     }
 
@@ -83,14 +90,16 @@ class CharacterDetails : Fragment() {
         binding.comicsList.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
+
+        binding.storiesList.adapter = adapterEvents
+        binding.storiesList.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
         binding.fromDetails.setOnClickListener {
             findNavController().navigateUp()
         }
         binding.itemCharacterDetailPhoto.load(args.characterPhoto)
         binding.characterNameDetails.text = args.characterName
-
-
-
 
         viewModelSeries
             .dataFlow
@@ -102,10 +111,7 @@ class CharacterDetails : Fragment() {
                     onFailure = {
                         AlertDialog.Builder(requireContext())
                             //TODO string
-                            .setMessage("111111111d11111111111")
-                            .setCancelable(false)
-                            //TODO string
-                            .setPositiveButton("OK") { _, _ -> findNavController().navigateUp() }
+                            .setMessage("Нет подключения к Интернету")
                             .show()
                     }
                 )
@@ -123,9 +129,22 @@ class CharacterDetails : Fragment() {
                         AlertDialog.Builder(requireContext())
                             //TODO string
                             .setMessage("R.string.is_no_internet")
-                            .setCancelable(false)
+                            .show()
+                    }
+                )
+            }.launchIn(viewLifecycleOwner.lifecycleScope)
+
+        viewModelEvents
+            .dataFlow
+            .onEach {
+                it.fold(
+                    onSuccess = {
+                        adapterEvents.submitList(it)
+                    },
+                    onFailure = {
+                        AlertDialog.Builder(requireContext())
                             //TODO string
-                            .setPositiveButton("R.string.ok") { _, _ -> findNavController().navigateUp() }
+                            .setMessage("R.string.is_no_internet")
                             .show()
                     }
                 )

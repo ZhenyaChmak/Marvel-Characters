@@ -7,7 +7,7 @@ class GetCharactersQuantityLocalUseCase(
     private val charactersQuantityLocalRepository: CharactersLocalRepository
 ) {
 
-    suspend operator fun invoke(limit: Int, offset: Int): List<Character>{
+    suspend operator fun invoke(limit: Int, offset: Int): List<Character> {
         return charactersQuantityLocalRepository.getCharactersQuantity(limit, offset)
     }
 

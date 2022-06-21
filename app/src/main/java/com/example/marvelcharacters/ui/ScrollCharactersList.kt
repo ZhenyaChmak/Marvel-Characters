@@ -1,6 +1,5 @@
 package com.example.marvelcharacters.ui
 
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.marvelcharacters.adapter.character.CharacterAdapter
 import com.yarolegovich.discretescrollview.DiscreteScrollView
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer
@@ -12,13 +11,11 @@ fun scrollView(
 
     view.adapter = adapter
 
-    view.setSlideOnFlingThreshold(1000)
-
-    view.setSlideOnFling(true)
+    view.setSlideOnFlingThreshold(1200)
 
     view.setItemTransformer(
         ScaleTransformer.Builder()
-            .setMaxScale(1.0f)
+            .setMaxScale(1.2f)
             .setMinScale(0.7f)
             .build()
     )

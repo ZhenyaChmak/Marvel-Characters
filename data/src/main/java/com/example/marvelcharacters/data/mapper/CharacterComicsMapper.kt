@@ -13,6 +13,7 @@ internal fun ResultComics.toDomainModel(): Comics {
     return Comics(
         id = id,
         photoComics = photoComics.path + "." + photoComics.extension,
-        description = description
+        description = description,
+        title = title
     )
 }

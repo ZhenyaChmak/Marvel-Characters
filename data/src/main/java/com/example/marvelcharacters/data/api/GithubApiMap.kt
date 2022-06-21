@@ -6,7 +6,7 @@ import retrofit2.http.Path
 
 internal interface GithubApiMap {
 
-    @GET("http://restcountries.com/v3.1/name/{name}")
+    @GET("name/{name}")
     suspend fun getCountry(
         @Path("name") name: String
     ): List<CountryDTO>

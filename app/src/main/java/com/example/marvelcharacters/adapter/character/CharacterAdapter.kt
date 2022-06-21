@@ -6,13 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.marvelcharacters.adapter.LoadingViewHolder
 import com.example.marvelcharacters.databinding.FragmentCharacterBinding
 import com.example.marvelcharacters.databinding.LoadingBinding
 import com.example.marvelcharacters.domain.model.Character
 import com.example.marvelcharacters.model.Lce
-import kotlinx.coroutines.withContext
 
 class CharacterAdapter(
     context: Context,

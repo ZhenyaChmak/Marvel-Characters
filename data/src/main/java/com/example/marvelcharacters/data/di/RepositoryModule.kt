@@ -1,6 +1,7 @@
 package com.example.marvelcharacters.data.di
 
 import com.example.marvelcharacters.data.repository.CharacterComicsRemoteRepositoryImpl
+import com.example.marvelcharacters.data.repository.CharacterEventsRemoteRepositoryImpl
 import com.example.marvelcharacters.data.repository.CharacterSeriesRemoteRepositoryImpl
 import com.example.marvelcharacters.data.repository.CharactersLocalRepositoryImpl
 import com.example.marvelcharacters.data.repository.CharactersRemoteRepositoryImpl
@@ -26,6 +27,10 @@ internal val repositoryModule = module {
 
     singleOf(::CharacterComicsRemoteRepositoryImpl) {
         bind<CharacterComicsRemoteRepository>()
+    }
+
+    singleOf(::CharacterEventsRemoteRepositoryImpl) {
+        bind<CharacterEventsRemoteRepository>()
     }
 
     singleOf(::MapRemoteRepositoryImpl) {

@@ -4,5 +4,6 @@ import com.example.marvelcharacters.domain.model.Comics
 
 interface CharacterComicsRemoteRepository {
 
-    suspend fun gerComics(id: Int): Result<List<Comics>>
+    suspend fun gerComics(id: Int, hash: String): Result<List<Comics>>
+
 }

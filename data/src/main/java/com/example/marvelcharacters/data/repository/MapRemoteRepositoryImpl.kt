@@ -6,8 +6,8 @@ import com.example.marvelcharacters.domain.model.Country
 import com.example.marvelcharacters.domain.repository.MapRemoteRepository
 
 internal class MapRemoteRepositoryImpl(
-    private val githubApiMap : GithubApiMap
-): MapRemoteRepository {
+    private val githubApiMap: GithubApiMap
+) : MapRemoteRepository {
 
     override suspend fun getCountry(name: String): Result<List<Country>> {
         return runCatching {

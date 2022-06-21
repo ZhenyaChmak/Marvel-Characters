@@ -7,7 +7,7 @@
     <string name="click_to_details">Click to details</string>
     <string name="series">Series</string>
     <string name="comics">Comics</string>
-    <string name="stories">Stories</string>
+    <string name="events">Events</string>
     <string name="from_details">From_details</string>
     <string name="photo_series">Photo_series</string>
     <string name="photo_series_details">Photo_series_details</string>
@@ -23,5 +23,8 @@
     <string name="region">Region:</string>
     <string name="capital">Capital:</string>
     <string name="timezones">Timezones:</string>
+    <string name="character_photo">Character_photo</string>
+    <string name="ic_to_details_character">ic_to_details_character</string>
+    <string name="photo_events">Photo_events</string>
 
 </resources>

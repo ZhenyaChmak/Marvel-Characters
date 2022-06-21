@@ -64,13 +64,14 @@ class CustomGoogleMap : Fragment() {
         mapPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
 
         binding.mapView.getMapAsync { remoteGoogleMap ->
+            remoteGoogleMap.isMyLocationEnabled = checkLocationPermission()
+
             googleMap = remoteGoogleMap.apply {
                 uiSettings.isZoomControlsEnabled = true
                 uiSettings.isMyLocationButtonEnabled = true
                 uiSettings.isCompassEnabled = true
             }
             //TODO custom
-            remoteGoogleMap.isMyLocationEnabled = checkLocationPermission()
 
             viewModelMap
                 .dataFlow

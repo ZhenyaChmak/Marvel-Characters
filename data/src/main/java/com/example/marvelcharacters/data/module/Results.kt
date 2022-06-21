@@ -1,6 +1,5 @@
 package com.example.marvelcharacters.data.module
 
-import com.example.marvelcharacters.data.module.comics.ComicsDTO
 import com.google.gson.annotations.SerializedName
 
 internal data class Results(

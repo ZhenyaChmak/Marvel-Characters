@@ -9,9 +9,9 @@ internal class CharacterComicsRemoteRepositoryImpl(
     private val githubApiMarvel: GithubApiMarvel
 ) : CharacterComicsRemoteRepository {
 
-    override suspend fun gerComics(id: Int): Result<List<Comics>> {
+    override suspend fun gerComics(id: Int, hash: String): Result<List<Comics>> {
         return runCatching {
-            githubApiMarvel.getComics(id)
+            githubApiMarvel.getComics(id, hash)
         }.map {
             it.data.results.toDomainModel()
         }

@@ -1,5 +1,5 @@
 package com.example.marvelcharacters.domain.model
 
-data class Stories(
-    val id: Int
-)
+enum class CustomQualifier {
+    MAP_BASE_URL
+}

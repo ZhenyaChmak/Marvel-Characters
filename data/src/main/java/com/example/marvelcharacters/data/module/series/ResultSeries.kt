@@ -7,5 +7,6 @@ internal data class ResultSeries(
     val id: Int,
     @SerializedName("thumbnail")
     val photoSeries: Thumbnail,
-    val description: String
+    val description: String,
+    val title: String
 )

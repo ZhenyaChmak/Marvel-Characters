@@ -7,8 +7,8 @@ class GetCharacterComicsRemoteUseCase(
     private val characterComicsRemoteUseCase: CharacterComicsRemoteRepository
 ) {
 
-    suspend operator fun invoke(id: Int): Result<List<Comics>> {
-        return characterComicsRemoteUseCase.gerComics(id)
+    suspend operator fun invoke(id: Int, hash: String): Result<List<Comics>> {
+        return characterComicsRemoteUseCase.gerComics(id,hash)
     }
 
 }
