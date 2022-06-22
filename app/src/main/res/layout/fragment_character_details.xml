@@ -48,14 +48,11 @@
 
             <TextView
                 android:id="@+id/character_name_details"
+                style="@style/CustomShadowsName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="15dp"
-                android:shadowColor="#D50303"
-                android:shadowDx="9"
-                android:shadowDy="5"
-                android:shadowRadius="3"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
                 android:textColor="@color/white"
                 android:textSize="42sp"

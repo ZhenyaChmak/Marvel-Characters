@@ -1,17 +1,15 @@
-package com.example.marvelcharacters.ui
+package com.example.marvelcharacters.ui.characters
 
-import com.example.marvelcharacters.adapter.character.CharacterAdapter
 import com.yarolegovich.discretescrollview.DiscreteScrollView
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer
 
 fun scrollView(
-    view: DiscreteScrollView,
-    adapter: CharacterAdapter
+    view: DiscreteScrollView
 ) {
 
-    view.adapter = adapter
+    view.setSlideOnFlingThreshold(3000)
 
-    view.setSlideOnFlingThreshold(1200)
+    view.setSlideOnFling(true)
 
     view.setItemTransformer(
         ScaleTransformer.Builder()
@@ -19,4 +17,5 @@ fun scrollView(
             .setMinScale(0.7f)
             .build()
     )
+
 }

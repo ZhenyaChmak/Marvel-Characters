@@ -31,6 +31,7 @@ class CharacterListViewModel(
         }
 
     private var isLoading = false
+    private var isEndList = false
     private var currentPage = 1
 
 
@@ -52,24 +53,26 @@ class CharacterListViewModel(
         loadSharedFlow
             .onEach {
                 if (it == LoadState.REFRESH) {
-                    currentPage = 0
+                    currentPage = 1
                     isLoading = true
                 }
                 if (it == LoadState.LOAD)
                     isLoading = true
             }
-            .filter { isLoading }
+            .filter { isLoading && !isEndList }
             .map {
-                remoteUseCase(BuildConfig.HASH_KEY,currentPage * PAGE_SIZE, 0,)
+                remoteUseCase(BuildConfig.HASH_KEY, currentPage * PAGE_SIZE, 0)
                     .fold(
-                        onSuccess = {
-                            insertLocalUseCase(it)
-                            println()
+                        onSuccess = { list ->
+                            insertLocalUseCase(list)
+                            if (currentPage == NUMBER_PAGES) {
+                                isEndList = true
+                            }
                             currentPage++
-                            it
+                            list
                         },
                         onFailure = {
-                            emptyList<Character>()
+                            emptyList()
                         }
                     )
             }
@@ -78,17 +81,8 @@ class CharacterListViewModel(
                 isLoading = false
             }
             .onStart {
-                remoteUseCase(BuildConfig.HASH_KEY,currentPage * PAGE_SIZE, 0)
-                    .fold(onSuccess = {
-                        insertLocalUseCase(it)
-                        emit(it)
-                    },
-                        onFailure = {
-                            emit(emptyList())
-                        })
-
-                /*if (localUseCase().isEmpty()) {
-                    remoteUseCase(BuildConfig.HASH_KEY,currentPage * PAGE_SIZE, 0)
+                if (localUseCase().isEmpty()) {
+                    remoteUseCase(BuildConfig.HASH_KEY, currentPage * PAGE_SIZE, 0)
                         .fold(onSuccess = {
                             insertLocalUseCase(it)
                             emit(quantityLocalUseCase(currentPage * PAGE_SIZE, 0))
@@ -98,26 +92,13 @@ class CharacterListViewModel(
                             })
                 } else {
                     emit(quantityLocalUseCase(currentPage * PAGE_SIZE, 0))
-                }*/
+                }
             }
 
     companion object {
-        private const val PAGE_SIZE = 40
+        private const val PAGE_SIZE = 20
+        private const val NUMBER_PAGES = 100 / PAGE_SIZE
     }
 
 }
-
-
-/*private val _lceFlow = MutableStateFlow(Lce.Loading)
-    val lceFlow = _lceFlow.asStateFlow()
-*/
-
-
-/*val dataFlow = flow {
-        emit(remoteUseCase())
-    }.shareIn(
-        scope = viewModelScope,
-        replay = 1,
-        started = SharingStarted.Eagerly
-    )*/
 

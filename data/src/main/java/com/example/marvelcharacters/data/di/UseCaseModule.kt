@@ -24,4 +24,6 @@ internal val useCaseModule = module {
 
     singleOf(::GetMapAllRemoteUseCase)
 
+    singleOf(::GetCountryMapInsertLocalUseCase)
+
 }

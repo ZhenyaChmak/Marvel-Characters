@@ -12,6 +12,7 @@ class EventsVieHolder(
 
     fun bind(events: Events) {
         with(binding) {
+
             photoEvents.load(events.photoEvents)
 
             root.setOnClickListener {
@@ -19,4 +20,5 @@ class EventsVieHolder(
             }
         }
     }
+
 }

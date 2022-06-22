@@ -24,18 +24,13 @@ import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.parameter.parametersOf
 
 class CustomGoogleMap : Fragment() {
 
     private var _binding: FragmentGoogleMapBinding? = null
     private val binding get() = requireNotNull(_binding)
 
-    private val name = "Germany"
-
-    private val viewModelMap by viewModel<MapViewModel> {
-        parametersOf(name)
-    }
+    private val viewModelMap by viewModel<MapViewModel>()
 
     private var googleMap: GoogleMap? = null
 
@@ -64,6 +59,7 @@ class CustomGoogleMap : Fragment() {
         mapPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
 
         binding.mapView.getMapAsync { remoteGoogleMap ->
+
             remoteGoogleMap.isMyLocationEnabled = checkLocationPermission()
 
             googleMap = remoteGoogleMap.apply {
@@ -71,7 +67,6 @@ class CustomGoogleMap : Fragment() {
                 uiSettings.isMyLocationButtonEnabled = true
                 uiSettings.isCompassEnabled = true
             }
-            //TODO custom
 
             viewModelMap
                 .dataFlow
@@ -79,6 +74,7 @@ class CustomGoogleMap : Fragment() {
                     it.fold(
                         onSuccess = { list ->
                             list.map { country ->
+
                                 viewModelMap
                                     .toDetailsCountry(country)
 
@@ -119,20 +115,6 @@ class CustomGoogleMap : Fragment() {
         }
 
         binding.mapView.onCreate(savedInstanceState)
-
-        viewModelMap
-            .dataAllFlow
-            .onEach {
-                it.fold(
-                    onSuccess = {
-                        println()
-                    },
-                    onFailure = {
-                        println()
-                    }
-                )
-            }.launchIn(viewLifecycleOwner.lifecycleScope)
-
     }
 
     override fun onStart() {

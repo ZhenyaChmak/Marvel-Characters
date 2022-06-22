@@ -12,6 +12,7 @@ class SeriesViewHolder(
 
     fun bind(series: Series) {
         with(binding) {
+
             photoSeries.load(series.photoSeries)
 
             root.setOnClickListener {
@@ -19,4 +20,5 @@ class SeriesViewHolder(
             }
         }
     }
+
 }

@@ -5,16 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.marvelcharacters.R
 import com.example.marvelcharacters.adapter.character.CharacterAdapter
 import com.example.marvelcharacters.databinding.FragmentCharactersListBinding
 import com.example.marvelcharacters.model.CharacterListViewModel
 import com.example.marvelcharacters.model.PageItem
-import com.example.marvelcharacters.ui.scrollView
 import com.yarolegovich.discretescrollview.DiscreteScrollView
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -48,9 +47,8 @@ class CharactersList : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // binding.charactersListContainer.adapter = adapter
-
-        scrollView(binding.charactersListContainer, adapter)
+        binding.charactersListContainer.adapter = adapter
+        scrollView(binding.charactersListContainer)
 
         viewModel
             .toCharacterDetails
@@ -65,10 +63,8 @@ class CharactersList : Fragment() {
 
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.onRefresh()
-            /*  binding.swipeRefresh.isRefreshing = false*/
         }
 
-        // val layoutManager = LinearLayoutManager(requireContext())
         binding.charactersListContainer
             .addPaginationScrollListener(binding.charactersListContainer, ITEMS_TO_LOADING) {
                 viewModel.onLoadMore()
@@ -77,19 +73,22 @@ class CharactersList : Fragment() {
         viewModel
             .getData
             .onEach { list ->
-                println()
                 if (list.isEmpty()) {
                     AlertDialog.Builder(requireContext())
-                        .setMessage("azdzsdfsdfsdfsdfsd")
+                        .setMessage(R.string.failure)
+                        .setPositiveButton(R.string.ok){_,_ ->}
                         .show()
                 } else {
                     adapter.submitList(
                         list.map {
                             PageItem.Element(it)
                         } + PageItem.Loading)
+
+                    if (binding.swipeRefresh.isRefreshing) {
+                        binding.swipeRefresh.isRefreshing = false
+                    }
                 }
             }.launchIn(viewLifecycleOwner.lifecycleScope)
-
 
     }
 
@@ -99,9 +98,9 @@ class CharactersList : Fragment() {
     }
 
     companion object {
-        private const val ITEMS_TO_LOADING = 10
-
+        private const val ITEMS_TO_LOADING = 5
     }
+
 }
 
 fun RecyclerView.addPaginationScrollListener(
@@ -113,35 +112,14 @@ fun RecyclerView.addPaginationScrollListener(
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
 
-            /*val totalItemCount = layoutManager.itemCount
-            val lastVisibility = layoutManager.findLastVisibleItemPosition()
-            if (dy != 0 && totalItemCount <= (lastVisibility + itemsToLoading)) {
-                recyclerView.post(onLoadMore)
-            }*/
+            val totalItemCount = layoutManager?.itemCount
+            val lastVisibility = view.currentItem
 
-            val totalItemCount = view.currentItem
-            if(totalItemCount == 8){
-                recyclerView.post(onLoadMore)
+            if (totalItemCount != null) {
+                if (totalItemCount <= (lastVisibility + itemsToLoading)) {
+                    onLoadMore()
+                }
             }
         }
     })
 }
-
-
-/*viewModel
-                 .dataFlow
-                 .onEach {
-                     it.fold(
-                         onSuccess = {
-                             println()
-                                 binding.loading.isVisible = false
-                             adapter.submitList(it.map {
-                                 Lce.Element(it)
-                             })
-                         },
-                         onFailure = {
-                             println(it)
-                         }
-                     )
-                 }
-                 .launchIn(viewLifecycleOwner.lifecycleScope)*/

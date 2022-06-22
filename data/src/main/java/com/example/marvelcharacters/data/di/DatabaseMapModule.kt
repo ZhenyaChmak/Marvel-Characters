@@ -1,23 +1,23 @@
 package com.example.marvelcharacters.data.di
 
 import androidx.room.Room
-import com.example.marvelcharacters.data.database.AppDatabase
+import com.example.marvelcharacters.data.database.AppDatabaseMap
 import org.koin.dsl.module
 
-internal val databaseModule = module {
+internal val databaseMapModule = module {
 
     single {
         Room
             .databaseBuilder(
                 get(),
-                AppDatabase::class.java,
-                "databaseCharacters"
+                AppDatabaseMap::class.java,
+                "databaseCountry"
             )
             .build()
     }
 
     single {
-        get<AppDatabase>().characterDao()
+        get<AppDatabaseMap>().countryDao()
     }
 
 }

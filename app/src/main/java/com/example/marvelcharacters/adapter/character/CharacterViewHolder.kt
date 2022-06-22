@@ -12,6 +12,7 @@ class CharacterViewHolder(
 
     fun bind(character: Character) {
         with(binding) {
+
             characterName.text = character.name
 
             Picasso.with(root.context).load(character.photo).into(itemCharacterPhoto)
@@ -19,6 +20,7 @@ class CharacterViewHolder(
             details.setOnClickListener {
                 onClickedCharacter(character)
             }
+
         }
     }
 }

@@ -1,10 +1,12 @@
 package com.example.marvelcharacters.data.di
 
+import com.example.marvelcharacters.data.repository.characters.*
 import com.example.marvelcharacters.data.repository.characters.CharacterComicsRemoteRepositoryImpl
 import com.example.marvelcharacters.data.repository.characters.CharacterEventsRemoteRepositoryImpl
 import com.example.marvelcharacters.data.repository.characters.CharacterSeriesRemoteRepositoryImpl
 import com.example.marvelcharacters.data.repository.characters.CharactersLocalRepositoryImpl
 import com.example.marvelcharacters.data.repository.characters.CharactersRemoteRepositoryImpl
+import com.example.marvelcharacters.data.repository.characters.CountryMapLocalRepositoryImpl
 import com.example.marvelcharacters.data.repository.googlemap.MapAllRemoteRepositoryImpl
 import com.example.marvelcharacters.data.repository.googlemap.MapRemoteRepositoryImpl
 import com.example.marvelcharacters.domain.repository.*
@@ -40,6 +42,10 @@ internal val repositoryModule = module {
 
     singleOf(::MapAllRemoteRepositoryImpl) {
         bind<MapAllRemoteRepository>()
+    }
+
+    singleOf(::CountryMapLocalRepositoryImpl) {
+        bind<CountryMapLocalRepository>()
     }
 
 }

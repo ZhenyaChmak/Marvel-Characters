@@ -122,6 +122,7 @@ class CharacterDetails : Fragment() {
             .onEach {
                 it.fold(
                     onSuccess = {
+
                         adapterComics.submitList(it)
                     },
                     onFailure = {

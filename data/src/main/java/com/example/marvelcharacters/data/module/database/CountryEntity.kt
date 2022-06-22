@@ -5,12 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-internal data class CharacterEntity(
+internal data class CountryEntity(
     @PrimaryKey(autoGenerate = true)
-    val idAuto: Int = 0,
-    @ColumnInfo(name = "idCharacter")
-    val id: Int,
+    val id: Int = 0,
     @ColumnInfo(name = "name")
-    val name: String,
-    val photo: String
+    val name: String
 )
