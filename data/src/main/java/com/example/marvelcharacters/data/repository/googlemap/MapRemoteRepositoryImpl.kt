@@ -1,7 +1,7 @@
 package com.example.marvelcharacters.data.repository.googlemap
 
 import com.example.marvelcharacters.data.api.GithubApiMap
-import com.example.marvelcharacters.data.mapper.toDomainModule
+import com.example.marvelcharacters.data.mapper.googlemap.toDomainModule
 import com.example.marvelcharacters.domain.model.Country
 import com.example.marvelcharacters.domain.repository.MapRemoteRepository
 

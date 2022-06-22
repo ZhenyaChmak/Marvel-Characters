@@ -1,4 +1,4 @@
-package com.example.marvelcharacters.data.mapper
+package com.example.marvelcharacters.data.mapper.googlemap
 
 import com.example.marvelcharacters.data.module.googlemap.CountryDTO
 import com.example.marvelcharacters.domain.model.Country

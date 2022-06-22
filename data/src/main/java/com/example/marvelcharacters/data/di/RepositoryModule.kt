@@ -5,6 +5,7 @@ import com.example.marvelcharacters.data.repository.characters.CharacterEventsRe
 import com.example.marvelcharacters.data.repository.characters.CharacterSeriesRemoteRepositoryImpl
 import com.example.marvelcharacters.data.repository.characters.CharactersLocalRepositoryImpl
 import com.example.marvelcharacters.data.repository.characters.CharactersRemoteRepositoryImpl
+import com.example.marvelcharacters.data.repository.googlemap.MapAllRemoteRepositoryImpl
 import com.example.marvelcharacters.data.repository.googlemap.MapRemoteRepositoryImpl
 import com.example.marvelcharacters.domain.repository.*
 import org.koin.core.module.dsl.bind
@@ -35,6 +36,10 @@ internal val repositoryModule = module {
 
     singleOf(::MapRemoteRepositoryImpl) {
         bind<MapRemoteRepository>()
+    }
+
+    singleOf(::MapAllRemoteRepositoryImpl) {
+        bind<MapAllRemoteRepository>()
     }
 
 }

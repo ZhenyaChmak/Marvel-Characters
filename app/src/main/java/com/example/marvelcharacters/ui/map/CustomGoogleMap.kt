@@ -31,7 +31,7 @@ class CustomGoogleMap : Fragment() {
     private var _binding: FragmentGoogleMapBinding? = null
     private val binding get() = requireNotNull(_binding)
 
-    private val name = "Rwanda"
+    private val name = "Germany"
 
     private val viewModelMap by viewModel<MapViewModel> {
         parametersOf(name)
@@ -120,6 +120,18 @@ class CustomGoogleMap : Fragment() {
 
         binding.mapView.onCreate(savedInstanceState)
 
+        viewModelMap
+            .dataAllFlow
+            .onEach {
+                it.fold(
+                    onSuccess = {
+                        println()
+                    },
+                    onFailure = {
+                        println()
+                    }
+                )
+            }.launchIn(viewLifecycleOwner.lifecycleScope)
 
     }
 

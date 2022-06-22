@@ -11,4 +11,7 @@ internal interface GithubApiMap {
         @Path("name") name: String
     ): List<CountryDTO>
 
+    @GET("all")
+    suspend fun getAllCountry(): List<CountryDTO>
+
 }
