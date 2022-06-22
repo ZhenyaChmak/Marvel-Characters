@@ -1,6 +1,6 @@
 package com.example.marvelcharacters.data.module.events
 
-import com.example.marvelcharacters.data.module.Thumbnail
+import com.example.marvelcharacters.data.module.character.Thumbnail
 import com.google.gson.annotations.SerializedName
 
 internal data class ResultEvents(

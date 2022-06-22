@@ -1,4 +1,4 @@
-package com.example.marvelcharacters.data.module.country
+package com.example.marvelcharacters.data.module.googlemap
 
 import com.google.gson.annotations.SerializedName
 

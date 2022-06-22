@@ -58,7 +58,7 @@
                 android:shadowRadius="3"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
                 android:textColor="@color/white"
-                android:textSize="48sp"
+                android:textSize="42sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -1,4 +1,4 @@
-package com.example.marvelcharacters.ui
+package com.example.marvelcharacters.ui.characters
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -9,12 +9,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marvelcharacters.adapter.character.CharacterAdapter
 import com.example.marvelcharacters.databinding.FragmentCharactersListBinding
 import com.example.marvelcharacters.model.CharacterListViewModel
-import com.example.marvelcharacters.model.Lce
+import com.example.marvelcharacters.model.PageItem
+import com.example.marvelcharacters.ui.scrollView
 import com.yarolegovich.discretescrollview.DiscreteScrollView
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -85,8 +85,8 @@ class CharactersList : Fragment() {
                 } else {
                     adapter.submitList(
                         list.map {
-                            Lce.Element(it)
-                        } + Lce.Loading)
+                            PageItem.Element(it)
+                        } + PageItem.Loading)
                 }
             }.launchIn(viewLifecycleOwner.lifecycleScope)
 

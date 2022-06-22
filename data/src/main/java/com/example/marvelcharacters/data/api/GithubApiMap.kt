@@ -1,6 +1,6 @@
 package com.example.marvelcharacters.data.api
 
-import com.example.marvelcharacters.data.module.country.CountryDTO
+import com.example.marvelcharacters.data.module.googlemap.CountryDTO
 import retrofit2.http.GET
 import retrofit2.http.Path
 

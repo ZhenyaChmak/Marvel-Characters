@@ -10,19 +10,19 @@ import com.example.marvelcharacters.adapter.LoadingViewHolder
 import com.example.marvelcharacters.databinding.FragmentCharacterBinding
 import com.example.marvelcharacters.databinding.LoadingBinding
 import com.example.marvelcharacters.domain.model.Character
-import com.example.marvelcharacters.model.Lce
+import com.example.marvelcharacters.model.PageItem
 
 class CharacterAdapter(
     context: Context,
     private val onClickedCharacter: (Character) -> Unit
-) : ListAdapter<Lce<Character>, RecyclerView.ViewHolder>(DIFF_UTIL) {
+) : ListAdapter<PageItem<Character>, RecyclerView.ViewHolder>(DIFF_UTIL) {
 
     private val layoutInflater = LayoutInflater.from(context)
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
-            is Lce.Element -> TYPE_CHARACTER
-            Lce.Loading -> TYPE_LOADING
+            is PageItem.Element -> TYPE_CHARACTER
+            PageItem.Loading -> TYPE_LOADING
         }
     }
 
@@ -46,7 +46,7 @@ class CharacterAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val characterLoadingVH = holder as? CharacterViewHolder ?: return
-        val item = (getItem(position) as? Lce.Element<Character>)?.data ?: return
+        val item = (getItem(position) as? PageItem.Element<Character>)?.data ?: return
         characterLoadingVH.bind(item)
     }
 
@@ -55,20 +55,20 @@ class CharacterAdapter(
         private const val TYPE_CHARACTER = 0
         private const val TYPE_LOADING = 1
 
-        private val DIFF_UTIL = object : DiffUtil.ItemCallback<Lce<Character>>() {
+        private val DIFF_UTIL = object : DiffUtil.ItemCallback<PageItem<Character>>() {
             override fun areItemsTheSame(
-                oldItem: Lce<Character>,
-                newItem: Lce<Character>
+                oldItem: PageItem<Character>,
+                newItem: PageItem<Character>
             ): Boolean {
                 return oldItem == newItem
             }
 
             override fun areContentsTheSame(
-                oldItem: Lce<Character>,
-                newItem: Lce<Character>
+                oldItem: PageItem<Character>,
+                newItem: PageItem<Character>
             ): Boolean {
-                val oldUser = oldItem as? Lce.Element
-                val newUser = newItem as? Lce.Element
+                val oldUser = oldItem as? PageItem.Element
+                val newUser = newItem as? PageItem.Element
                 return oldUser?.data == newUser?.data
             }
         }

@@ -1,11 +1,11 @@
 package com.example.marvelcharacters.data.di
 
-import com.example.marvelcharacters.data.repository.CharacterComicsRemoteRepositoryImpl
-import com.example.marvelcharacters.data.repository.CharacterEventsRemoteRepositoryImpl
-import com.example.marvelcharacters.data.repository.CharacterSeriesRemoteRepositoryImpl
-import com.example.marvelcharacters.data.repository.CharactersLocalRepositoryImpl
-import com.example.marvelcharacters.data.repository.CharactersRemoteRepositoryImpl
-import com.example.marvelcharacters.data.repository.MapRemoteRepositoryImpl
+import com.example.marvelcharacters.data.repository.characters.CharacterComicsRemoteRepositoryImpl
+import com.example.marvelcharacters.data.repository.characters.CharacterEventsRemoteRepositoryImpl
+import com.example.marvelcharacters.data.repository.characters.CharacterSeriesRemoteRepositoryImpl
+import com.example.marvelcharacters.data.repository.characters.CharactersLocalRepositoryImpl
+import com.example.marvelcharacters.data.repository.characters.CharactersRemoteRepositoryImpl
+import com.example.marvelcharacters.data.repository.googlemap.MapRemoteRepositoryImpl
 import com.example.marvelcharacters.domain.repository.*
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf

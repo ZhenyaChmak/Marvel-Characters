@@ -1,4 +1,4 @@
-package com.example.marvelcharacters.ui.details
+package com.example.marvelcharacters.ui.characters
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
-import com.example.marvelcharacters.R
 import com.example.marvelcharacters.adapter.comics.ComicsAdapter
 import com.example.marvelcharacters.adapter.events.EventsAdapter
 import com.example.marvelcharacters.adapter.series.SeriesAdapter

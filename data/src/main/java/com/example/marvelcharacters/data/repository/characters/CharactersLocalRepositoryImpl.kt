@@ -1,4 +1,4 @@
-package com.example.marvelcharacters.data.repository
+package com.example.marvelcharacters.data.repository.characters
 
 import com.example.marvelcharacters.data.database.CharacterDao
 import com.example.marvelcharacters.data.mapper.toDomainModel

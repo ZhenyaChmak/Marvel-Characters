@@ -20,4 +20,5 @@ class SeriesListViewModel(
         replay = 1,
         started = SharingStarted.Eagerly
     )
+
 }

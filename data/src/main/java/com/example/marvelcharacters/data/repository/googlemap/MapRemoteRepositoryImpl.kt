@@ -1,4 +1,4 @@
-package com.example.marvelcharacters.data.repository
+package com.example.marvelcharacters.data.repository.googlemap
 
 import com.example.marvelcharacters.data.api.GithubApiMap
 import com.example.marvelcharacters.data.mapper.toDomainModule

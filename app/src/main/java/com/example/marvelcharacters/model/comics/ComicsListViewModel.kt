@@ -20,4 +20,5 @@ class ComicsListViewModel(
         replay = 1,
         started = SharingStarted.Eagerly
     )
+
 }

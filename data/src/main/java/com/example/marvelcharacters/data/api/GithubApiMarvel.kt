@@ -1,6 +1,6 @@
 package com.example.marvelcharacters.data.api
 
-import com.example.marvelcharacters.data.module.CharacterDTO
+import com.example.marvelcharacters.data.module.character.CharacterDTO
 import com.example.marvelcharacters.data.module.comics.ComicsDTO
 import com.example.marvelcharacters.data.module.events.EventsDTO
 import com.example.marvelcharacters.data.module.series.SeriesDTO
