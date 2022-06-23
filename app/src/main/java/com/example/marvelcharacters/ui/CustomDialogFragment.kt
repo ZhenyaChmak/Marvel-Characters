@@ -8,11 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import coil.load
-import com.example.marvelcharacters.databinding.FragmentCharacterSeriesDetailsBinding
+import com.example.marvelcharacters.databinding.FragmentCharacterDetailsDialogBinding
 
 class CustomDialogFragment : DialogFragment() {
 
-    private var _binding: FragmentCharacterSeriesDetailsBinding? = null
+    private var _binding: FragmentCharacterDetailsDialogBinding? = null
     private val binding get() = requireNotNull(_binding)
 
     override fun onCreateView(
@@ -20,7 +20,7 @@ class CustomDialogFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return FragmentCharacterSeriesDetailsBinding.inflate(inflater, container, false)
+        return FragmentCharacterDetailsDialogBinding.inflate(inflater, container, false)
             .also { _binding = it }
             .root
     }
@@ -32,9 +32,9 @@ class CustomDialogFragment : DialogFragment() {
 
         val _arguments = arguments
         if (_arguments != null) {
-            binding.nameSeriesDetails.text = _arguments.getString("name")
-            binding.photoSeriesDetails.load(_arguments.getString("photo"))
-            binding.descriptionSeriesDetails.text = _arguments.getString("description")
+            binding.nameDetailsDialog.text = _arguments.getString(NAME)
+            binding.photoDetailsDialog.load(_arguments.getString(PHOTO))
+            binding.descriptionSeriesDetails.text = _arguments.getString(DESCRIPTION)
         }
 
     }
@@ -42,6 +42,12 @@ class CustomDialogFragment : DialogFragment() {
     override fun onDestroy() {
         _binding = null
         super.onDestroy()
+    }
+
+    companion object {
+        private const val NAME = "name"
+        private const val PHOTO = "photo"
+        private const val DESCRIPTION = "description"
     }
 
 }

@@ -26,5 +26,7 @@
     <string name="character_photo">Character_photo</string>
     <string name="ic_to_details_character">ic_to_details_character</string>
     <string name="photo_events">Photo_events</string>
+    <string name="name_details">Name_details</string>
+    <string name="description">Description</string>
 
 </resources>
