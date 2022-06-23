@@ -18,6 +18,9 @@ import com.example.marvelcharacters.databinding.FragmentCharacterDetailsBinding
 import com.example.marvelcharacters.model.comics.ComicsListViewModel
 import com.example.marvelcharacters.model.detais.SeriesListViewModel
 import com.example.marvelcharacters.model.events.EventsListViewModel
+import com.example.marvelcharacters.ui.showDetailsComics
+import com.example.marvelcharacters.ui.showDetailsEvents
+import com.example.marvelcharacters.ui.showDetailsSeries
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -41,29 +44,20 @@ class CharacterDetails : Fragment() {
     }
 
     private val adapterSeries by lazy {
-        SeriesAdapter(requireContext()) {
-            AlertDialog.Builder(requireContext())
-                .setTitle("Series")
-                .show()
-            /*findNavController().navigate(
-                CharacterDetailsDirections.toSeriesDetails()
-            )*/
+        SeriesAdapter(requireContext()) { series ->
+            showDetailsSeries(series).show(childFragmentManager, "series")
         }
     }
 
     private val adapterComics by lazy {
-        ComicsAdapter(requireContext()) {
-            AlertDialog.Builder(requireContext())
-                .setTitle("Comics")
-                .show()
+        ComicsAdapter(requireContext()) { comics ->
+            showDetailsComics(comics).show(childFragmentManager, "comics")
         }
     }
 
     private val adapterEvents by lazy {
-        EventsAdapter(requireContext()) {
-            AlertDialog.Builder(requireContext())
-                .setTitle("Events")
-                .show()
+        EventsAdapter(requireContext()) { events ->
+            showDetailsEvents(events).show(childFragmentManager, "events")
         }
     }
 
@@ -97,6 +91,7 @@ class CharacterDetails : Fragment() {
         binding.fromDetails.setOnClickListener {
             findNavController().navigateUp()
         }
+
         binding.itemCharacterDetailPhoto.load(args.characterPhoto)
         binding.characterNameDetails.text = args.characterName
 
@@ -156,4 +151,5 @@ class CharacterDetails : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

@@ -46,50 +46,51 @@ class CharactersList : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        with(binding) {
 
-        binding.charactersListContainer.adapter = adapter
-        scrollView(binding.charactersListContainer)
+            charactersListContainer.adapter = adapter
+            scrollView(charactersListContainer)
 
-        viewModel
-            .toCharacterDetails
-            .onEach {
-                findNavController().navigate(
-                    CharactersListDirections.toCharacterDetails(
-                        it.id, it.name, it.photo
+            viewModel
+                .toCharacterDetails
+                .onEach {
+                    findNavController().navigate(
+                        CharactersListDirections.toCharacterDetails(
+                            it.id, it.name, it.photo
+                        )
                     )
-                )
-            }.launchIn(viewLifecycleOwner.lifecycleScope)
+                }.launchIn(viewLifecycleOwner.lifecycleScope)
 
 
-        binding.swipeRefresh.setOnRefreshListener {
-            viewModel.onRefresh()
-        }
-
-        binding.charactersListContainer
-            .addPaginationScrollListener(binding.charactersListContainer, ITEMS_TO_LOADING) {
-                viewModel.onLoadMore()
+            swipeRefresh.setOnRefreshListener {
+                viewModel.onRefresh()
             }
 
-        viewModel
-            .getData
-            .onEach { list ->
-                if (list.isEmpty()) {
-                    AlertDialog.Builder(requireContext())
-                        .setMessage(R.string.failure)
-                        .setPositiveButton(R.string.ok){_,_ ->}
-                        .show()
-                } else {
-                    adapter.submitList(
-                        list.map {
-                            PageItem.Element(it)
-                        } + PageItem.Loading)
-
-                    if (binding.swipeRefresh.isRefreshing) {
-                        binding.swipeRefresh.isRefreshing = false
-                    }
+            charactersListContainer
+                .addPaginationScrollListener(charactersListContainer, ITEMS_TO_LOADING) {
+                    viewModel.onLoadMore()
                 }
-            }.launchIn(viewLifecycleOwner.lifecycleScope)
 
+            viewModel
+                .getData
+                .onEach { list ->
+                    if (list.isEmpty()) {
+                        AlertDialog.Builder(requireContext())
+                            .setMessage(R.string.failure)
+                            .setPositiveButton(R.string.ok) { _, _ -> }
+                            .show()
+                    } else {
+                        adapter.submitList(
+                            list.map {
+                                PageItem.Element(it)
+                            } + PageItem.Loading)
+
+                        if (swipeRefresh.isRefreshing) {
+                            swipeRefresh.isRefreshing = false
+                        }
+                    }
+                }.launchIn(viewLifecycleOwner.lifecycleScope)
+        }
     }
 
     override fun onDestroyView() {
