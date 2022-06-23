@@ -3,8 +3,10 @@ package com.example.marvelcharacters.adapter.series
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import com.example.marvelcharacters.R
 import com.example.marvelcharacters.databinding.FragmentCharacterSeriesBinding
 import com.example.marvelcharacters.domain.model.Series
 
@@ -23,6 +25,8 @@ class SeriesAdapter(
     }
 
     override fun onBindViewHolder(holder: SeriesViewHolder, position: Int) {
+        holder.itemView.animation =
+            AnimationUtils.loadAnimation(holder.itemView.context, R.anim.anim_series)
         holder.bind(getItem(position))
     }
 

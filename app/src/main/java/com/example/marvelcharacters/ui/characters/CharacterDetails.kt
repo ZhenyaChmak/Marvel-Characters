@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
+import com.example.marvelcharacters.R
 import com.example.marvelcharacters.adapter.comics.ComicsAdapter
 import com.example.marvelcharacters.adapter.events.EventsAdapter
 import com.example.marvelcharacters.adapter.series.SeriesAdapter
@@ -33,10 +34,10 @@ class CharacterDetails : Fragment() {
 
     private val args by navArgs<CharacterDetailsArgs>()
 
-    private val viewModelSeries by viewModel<SeriesListViewModel>() {
+    private val viewModelSeries by viewModel<SeriesListViewModel> {
         parametersOf(args.characterId)
     }
-    private val viewModelComics by viewModel<ComicsListViewModel>() {
+    private val viewModelComics by viewModel<ComicsListViewModel> {
         parametersOf(args.characterId)
     }
     private val viewModelEvents by viewModel<EventsListViewModel> {
@@ -99,13 +100,12 @@ class CharacterDetails : Fragment() {
             .dataFlow
             .onEach {
                 it.fold(
-                    onSuccess = {
-                        adapterSeries.submitList(it)
+                    onSuccess = { series ->
+                        adapterSeries.submitList(series)
                     },
                     onFailure = {
                         AlertDialog.Builder(requireContext())
-                            //TODO string
-                            .setMessage("Нет подключения к Интернету")
+                            .setMessage(R.string.failure)
                             .show()
                     }
                 )
@@ -116,14 +116,12 @@ class CharacterDetails : Fragment() {
             .dataFlow
             .onEach {
                 it.fold(
-                    onSuccess = {
-
-                        adapterComics.submitList(it)
+                    onSuccess = { comics ->
+                        adapterComics.submitList(comics)
                     },
                     onFailure = {
                         AlertDialog.Builder(requireContext())
-                            //TODO string
-                            .setMessage("R.string.is_no_internet")
+                            .setMessage(R.string.failure)
                             .show()
                     }
                 )
@@ -133,13 +131,12 @@ class CharacterDetails : Fragment() {
             .dataFlow
             .onEach {
                 it.fold(
-                    onSuccess = {
-                        adapterEvents.submitList(it)
+                    onSuccess = { events ->
+                        adapterEvents.submitList(events)
                     },
                     onFailure = {
                         AlertDialog.Builder(requireContext())
-                            //TODO string
-                            .setMessage("R.string.is_no_internet")
+                            .setMessage(R.string.failure)
                             .show()
                     }
                 )

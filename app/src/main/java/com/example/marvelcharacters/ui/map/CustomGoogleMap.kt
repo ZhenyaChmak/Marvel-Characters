@@ -115,6 +115,7 @@ class CustomGoogleMap : Fragment() {
         }
 
         binding.mapView.onCreate(savedInstanceState)
+
     }
 
     override fun onStart() {
